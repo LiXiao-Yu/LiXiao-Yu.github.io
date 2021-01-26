@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		1. 常见数据结构与算法 | 
+	 
+	Hexo
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "https://lixiao-yu.github.io/";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">Hexo</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<!-- <li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li> -->
+		<!-- <li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li> -->
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Python
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										cookbook经验总结
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/2021/01/26/Python/cookbook%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/1.%20%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+										1. 常见数据结构与算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">
+										复杂网络
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+										我的第一篇博客
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	1. 常见数据结构与算法
+</h1>
+<div class="article-meta">
+	
+	<span>Rrigyouu</span>
+	<span>2021-01-26 23:27:34</span>
+    
+		<div id="article-categories">
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h3 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h3><p>Python 提供了大量的内置数据结构，包括列表，集合以及字典。大多数情况下使用这些数据结构是很简单的。 但是，我们也会经常碰到到诸如查询，排序和过滤等等这些普遍存在的问题。 因此，这一章的目的就是讨论这些比较常见的问题和算法。</p>
+<hr>
+<h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><ol>
+<li><p>【序列多对多】现在有一个包含 N 个元素的元组或者是序列，怎样将它里面的值解压后同时赋值给 N 个变量？</p>
+</li>
+<li><p>【可迭代多对多】如果一个可迭代对象的元素个数超过变量个数时，会抛出一个 <code>ValueError</code> 。 那么怎样才能从这个可迭代对象中解压出 N 个元素出来？</p>
+</li>
+<li><p>【有限历史记录】在迭代操作或者其他操作的时候，怎样只保留最后有限几个元素的历史记录？</p>
+</li>
+<li><p>【最大最小元素】怎样从一个集合中获得最大或者最小的 N 个元素列表？</p>
+</li>
+<li><p>【优先级队列】怎样实现一个按优先级排序的队列？ 并且在这个队列上面每次 pop 操作总是返回优先级最高的那个元素。</p>
+</li>
+<li><p>【字典一对多】怎样实现一个键对应多个值的字典（也叫 <code>multidict</code>）？</p>
+</li>
+<li><p>【字典排序1】你想创建一个字典，并且在迭代或序列化这个字典的时候能够控制元素的顺序。</p>
+</li>
+<li><p>【字典运算】怎样在数据字典中执行一些计算操作（比如求最小值、最大值、排序等等）？</p>
+</li>
+<li><p>【字典相同点】怎样在两个字典中寻找相同点（比如相同的键、相同的值等等）？</p>
+</li>
+<li><p>【序列重复值】怎样在一个序列上面保持元素顺序的同时消除重复的值？</p>
+</li>
+<li><p>【切片命名】如果你的程序包含了大量无法直视的硬编码切片，并且你想清理一下代码。</p>
+</li>
+<li><p>【次数最多的元素】怎样找出一个序列中出现次数最多的元素呢？</p>
+</li>
+<li><p>【字典排序2】你有一个字典列表，你想根据某个或某几个字典字段来排序这个列表。</p>
+</li>
+<li><p>【排序原生对象】你想排序类型相同的对象，但是他们不支持原生的比较操作。</p>
+</li>
+<li><p>【记录分组】你有一个字典或者实例的序列，然后你想根据某个特定的字段比如 <code>date</code> 来分组迭代访问。</p>
+</li>
+<li><p>【序列子集】你有一个数据序列，想利用一些规则从中提取出需要的值或者是缩短序列。</p>
+</li>
+<li><p>【字典子集】你想构造一个字典，它是另外一个字典的子集。</p>
+</li>
+<li><p>【映射名称】你有一段通过下标访问列表或者元组中元素的代码，但是这样有时候会使得你的代码难以阅读， 于是你想通过名称来访问元素。</p>
+</li>
+<li><p>【转换并计算序列】你需要在数据序列上执行聚集函数（比如 <code>sum()</code> , <code>min()</code> , <code>max()</code> ）， 但是首先你需要先转换或者过滤数据。</p>
+</li>
+<li><p>【合并映射】现在有多个字典或者映射，你想将它们从逻辑上合并为一个单一的映射后执行某些操作， 比如查找值或者检查某些键是否存在。</p>
+</li>
+</ol>
+<hr>
+<h3 id="代码【1-5】"><a href="#代码【1-5】" class="headerlink" title="代码【1-5】"></a>代码【1-5】</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># 1. 序列多对多,赋值</span></span><br><span class="line"><span class="comment"># 字符串也可用</span></span><br><span class="line">record = [<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;gender&#x27;</span>, (<span class="string">&#x27;mail&#x27;</span>, <span class="string">&#x27;tel&#x27;</span>)]</span><br><span class="line">x, y, z = record</span><br><span class="line">print(x, y, z)</span><br><span class="line">x, y = <span class="string">&#x27;12&#x27;</span></span><br><span class="line">print(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 可迭代多对多，*语法</span></span><br><span class="line"><span class="comment"># 注意*语法与函数中的*args，函数中是先解压然后一个一个扔进去</span></span><br><span class="line"><span class="comment"># *分隔字符串</span></span><br><span class="line"><span class="comment"># 丢弃不需要的值，命名：*_;*ign</span></span><br><span class="line"><span class="comment"># 不能同时使用多个*</span></span><br><span class="line">No_1 = [<span class="string">&#x27;David&#x27;</span>, <span class="string">&#x27;man&#x27;</span>, <span class="string">&#x27;123@gmail.com&#x27;</span>, <span class="string">&#x27;asd@qq.com&#x27;</span>, <span class="string">&#x27;yes&#x27;</span>]</span><br><span class="line">x, y, *z, k = No_1</span><br><span class="line">print(z)</span><br><span class="line">passwd = <span class="string">&#x27;root:x:0:0:root:/root:/bin/bash&#x27;</span></span><br><span class="line">name, *mid, bash = passwd.split(<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">print(bash)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 有限历史记录</span></span><br><span class="line"><span class="comment"># 使用 deque(maxlen=N) 构造函数会新建一个固定大小的队列，当新元素加入，老元素会被删除</span></span><br><span class="line"><span class="comment"># 注意，maxlen不能采用位置参数</span></span><br><span class="line"><span class="comment"># append和pop都默认向右增删，向左增删有方法</span></span><br><span class="line"><span class="comment"># 注意，该方法在两端插入删除元素都为O(1)时间复杂度，列表为O(n)</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">queue = deque(maxlen=<span class="number">2</span>)</span><br><span class="line">queue.append(<span class="number">1</span>)</span><br><span class="line">queue.append(<span class="number">2</span>)</span><br><span class="line">queue.append(<span class="number">3</span>)</span><br><span class="line">print(queue)</span><br><span class="line">queue.popleft()</span><br><span class="line">queue.appendleft(<span class="number">132</span>)</span><br><span class="line">print(queue)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 最大最小元素</span></span><br><span class="line"><span class="comment"># heapq是python内置的一个堆排序，出此之外还有heapq.heapify、heapq.heappop等方法。</span></span><br><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line">nums = [<span class="number">1</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">23</span>, <span class="number">7</span>, -<span class="number">4</span>, <span class="number">18</span>, <span class="number">23</span>, <span class="number">42</span>, <span class="number">37</span>, <span class="number">2</span>]</span><br><span class="line">print(heapq.nlargest(<span class="number">2</span>, nums))</span><br><span class="line">print(heapq.nsmallest(<span class="number">2</span>, nums))</span><br><span class="line">nums = [&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;ibm&#x27;</span>, <span class="string">&#x27;value&#x27;</span>: <span class="number">123</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;fb&#x27;</span>, <span class="string">&#x27;value&#x27;</span>: <span class="number">234</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;yahoo&#x27;</span>, <span class="string">&#x27;value&#x27;</span>: <span class="number">789</span>&#125;]</span><br><span class="line">print(heapq.nsmallest(<span class="number">1</span>,nums, key= <span class="keyword">lambda</span> x: x[<span class="string">&#x27;value&#x27;</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 优先队列</span></span><br><span class="line"><span class="comment"># 利用heapq模块，实现简单的优先级队列</span></span><br><span class="line"><span class="comment"># heappush函数：heappush(heap, item, /)，以/的第一个数进行优先级进行最小堆排序</span></span><br><span class="line"><span class="comment"># 加负号，最小堆排序取最小节点，改变成取加负号后最小节点，即最大节点</span></span><br><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PriorityQueue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self._queue = []</span><br><span class="line">        self._index = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span>(<span class="params">self, item, priority</span>):</span></span><br><span class="line">        heapq.heappush(self._queue, (-priority, self._index, item))</span><br><span class="line">        self._index += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> heapq.heappop(self._queue)</span><br><span class="line"></span><br><span class="line">q = PriorityQueue()</span><br><span class="line">q.push(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>)</span><br><span class="line">q.push(<span class="string">&#x27;b&#x27;</span>, <span class="number">7</span>)</span><br><span class="line">q.push(<span class="string">&#x27;c&#x27;</span>, <span class="number">3</span>)</span><br><span class="line">q.push(<span class="string">&#x27;d&#x27;</span>, <span class="number">4</span>)</span><br><span class="line">print(q.pop())</span><br><span class="line">print(q._queue)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="代码【6-10】"><a href="#代码【6-10】" class="headerlink" title="代码【6-10】"></a>代码【6-10】</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># 6. 字典一对多</span></span><br><span class="line"><span class="comment"># 构造容器</span></span><br><span class="line"><span class="comment"># 或使用defaultdict构造字典，该方法会初始化每个key</span></span><br><span class="line"><span class="comment"># 或通过空字典用setdefault</span></span><br><span class="line"><span class="comment"># 通常用在记录归档中，有多个key value对，key有重复，将value按照key归档</span></span><br><span class="line">test = &#123;</span><br><span class="line">    <span class="string">&#x27;room1&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">    <span class="string">&#x27;room2&#x27;</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line">d = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">d[<span class="string">&#x27;room1&#x27;</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">d[<span class="string">&#x27;room2&#x27;</span>] = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">print(d)</span><br><span class="line"></span><br><span class="line">test = &#123;&#125;</span><br><span class="line">test.setdefault(<span class="string">&#x27;a&#x27;</span>, []).append(<span class="number">1</span>)</span><br><span class="line">test[<span class="string">&#x27;a&#x27;</span>].append(<span class="number">2</span>)</span><br><span class="line">test.setdefault(<span class="string">&#x27;c&#x27;</span>, [])</span><br><span class="line">print(test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 7. 字典排序</span></span><br><span class="line"><span class="comment"># 一个OrderDict内部维护一个根据键插入顺序排序的双向链表</span></span><br><span class="line"><span class="comment"># 因此，OrderDict大小是普通字典的两倍</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line">d = OrderedDict()</span><br><span class="line">d[<span class="string">&#x27;foo&#x27;</span>] = <span class="number">1</span></span><br><span class="line">d[<span class="string">&#x27;bar&#x27;</span>] = <span class="number">2</span></span><br><span class="line">d[<span class="string">&#x27;can&#x27;</span>] = <span class="number">3</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> d:</span><br><span class="line">    print(key, d[key])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 8. 字典运算</span></span><br><span class="line"><span class="comment"># 对value进行运算，用zip将键和值翻转，然后根据min和max来求</span></span><br><span class="line"><span class="comment"># 注意，zip() 函数创建的是一个只能访问一次的迭代器，无法进行多次运算。</span></span><br><span class="line"><span class="comment"># 当然也可以用max和min直接运算在prices.values上，但这样需要又进行一个查找key工作</span></span><br><span class="line">prices = &#123;<span class="string">&#x27;ACME&#x27;</span>: <span class="number">45.23</span>, <span class="string">&#x27;AAPL&#x27;</span>: <span class="number">612.78</span>, <span class="string">&#x27;IBM&#x27;</span>: <span class="number">205.55</span>, <span class="string">&#x27;HPQ&#x27;</span>: <span class="number">37.20</span>, <span class="string">&#x27;FB&#x27;</span>: <span class="number">10.75</span>&#125;</span><br><span class="line">print(<span class="built_in">max</span>(<span class="built_in">zip</span>(prices.values(), prices.keys())))</span><br><span class="line">print(<span class="built_in">sorted</span>(<span class="built_in">zip</span>(prices.values(), prices.keys())))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 9. 字典相同点</span></span><br><span class="line"><span class="comment"># keys返回一个键视图，也可以支持集合操作，例如交、差、合并，不需要再转化为set</span></span><br><span class="line"><span class="comment"># items同理，但是values不同，因为不能保证values值互不相同，所以应先set</span></span><br><span class="line">a = &#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;y&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;z&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line">b = &#123;<span class="string">&#x27;w&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;x&#x27;</span>: <span class="number">11</span>, <span class="string">&#x27;y&#x27;</span>: <span class="number">2</span>&#125;</span><br><span class="line">print(a.keys() &amp; b.keys())</span><br><span class="line">print(a.items() &amp; b.items())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 10. 序列重复值</span></span><br><span class="line"><span class="comment"># 如果不考虑顺序，set一下就好了</span></span><br><span class="line"><span class="comment"># 如果考虑顺序，就需要用函数</span></span><br><span class="line"><span class="comment"># 如果元素可哈希，则哈希一下即可</span></span><br><span class="line"><span class="comment"># 如果不可哈希，更改代码，通过某个函数将元素变成可哈希值</span></span><br><span class="line"><span class="comment"># 如果想读取文件，消除重复行，也可这么做</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dedupe</span>(<span class="params">items</span>):</span></span><br><span class="line">    seen = <span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        <span class="keyword">if</span> item <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">            <span class="keyword">yield</span> item</span><br><span class="line">            seen.add(item)</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>]</span><br><span class="line">print(<span class="built_in">list</span>(dedupe(a)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dedupe</span>(<span class="params">items, key = <span class="literal">None</span></span>):</span></span><br><span class="line">    seen = <span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        val = item <span class="keyword">if</span> key <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">else</span> key(item)</span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">            <span class="keyword">yield</span> item</span><br><span class="line">            seen.add(val)</span><br><span class="line"></span><br><span class="line">a = [&#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;y&#x27;</span>: <span class="number">2</span>&#125;, &#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;y&#x27;</span>: <span class="number">3</span>&#125;, &#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;y&#x27;</span>: <span class="number">2</span>&#125;, &#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;y&#x27;</span>: <span class="number">4</span>&#125;]</span><br><span class="line">print(<span class="built_in">list</span>(dedupe(a, key = <span class="keyword">lambda</span> d: (d[<span class="string">&#x27;x&#x27;</span>], d[<span class="string">&#x27;y&#x27;</span>]))))</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="代码【11-15】"><a href="#代码【11-15】" class="headerlink" title="代码【11-15】"></a>代码【11-15】</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># 11. 切片命名</span></span><br><span class="line"><span class="comment"># 通常20:23,31:37这种魔术字符不推荐使用，可读性差</span></span><br><span class="line"><span class="comment"># 一般通过切片对象slice来完成，切片对象还有a.start,a.stop,a.step等方法</span></span><br><span class="line"><span class="comment"># 还可以通过调用indices(size)方法将切片对象映射到一个已知大小的序列上，则会缩小end值</span></span><br><span class="line">record = <span class="string">&#x27;....................100 .......513.25 .........&#x27;</span></span><br><span class="line">cost = <span class="built_in">int</span>(record[<span class="number">20</span>:<span class="number">23</span>]) * <span class="built_in">float</span>(record[<span class="number">31</span>:<span class="number">37</span>])</span><br><span class="line">print(cost)</span><br><span class="line"></span><br><span class="line">SHAPES = <span class="built_in">slice</span>(<span class="number">20</span>, <span class="number">23</span>)</span><br><span class="line">PRICE = <span class="built_in">slice</span>(<span class="number">31</span>, <span class="number">37</span>)</span><br><span class="line">cost = <span class="built_in">int</span>(record[SHAPES])*<span class="built_in">float</span>(record[PRICE])</span><br><span class="line">print(cost)</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;Hello,World!&#x27;</span></span><br><span class="line">a = <span class="built_in">slice</span>(<span class="number">5</span>, <span class="number">50</span>, <span class="number">2</span>)</span><br><span class="line">print(a.indices(<span class="built_in">len</span>(s)))</span><br><span class="line"><span class="comment"># 这里的*，就是解压元组a，然后将元素值扔进range里面</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(*a.indices(<span class="built_in">len</span>(s))):</span><br><span class="line">    print(s[i])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 12. 次数最多的元素</span></span><br><span class="line"><span class="comment"># collections.Counter类，most_common()方法</span></span><br><span class="line"><span class="comment"># Counter对象是一个字典，将元素映射到他出现次数上</span></span><br><span class="line"><span class="comment"># 想增加一个对象，则可以使用update()方法</span></span><br><span class="line"><span class="comment"># 此外，Counts对象还可以使用数学运算符+、-</span></span><br><span class="line"><span class="comment"># count应该用在需要制表、或者计数场合</span></span><br><span class="line">words = [</span><br><span class="line">    <span class="string">&#x27;look&#x27;</span>, <span class="string">&#x27;into&#x27;</span>, <span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;eyes&#x27;</span>, <span class="string">&#x27;look&#x27;</span>, <span class="string">&#x27;into&#x27;</span>, <span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;eyes&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;the&#x27;</span>, <span class="string">&#x27;eyes&#x27;</span>, <span class="string">&#x27;the&#x27;</span>, <span class="string">&#x27;eyes&#x27;</span>, <span class="string">&#x27;the&#x27;</span>, <span class="string">&#x27;eyes&#x27;</span>, <span class="string">&#x27;not&#x27;</span>, <span class="string">&#x27;around&#x27;</span>, <span class="string">&#x27;the&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;eyes&#x27;</span>, <span class="string">&quot;don&#x27;t&quot;</span>, <span class="string">&#x27;look&#x27;</span>, <span class="string">&#x27;around&#x27;</span>, <span class="string">&#x27;the&#x27;</span>, <span class="string">&#x27;eyes&#x27;</span>, <span class="string">&#x27;look&#x27;</span>, <span class="string">&#x27;into&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;eyes&#x27;</span>, <span class="string">&quot;you&#x27;re&quot;</span>, <span class="string">&#x27;under&#x27;</span></span><br><span class="line">]</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">word_counts = Counter(words)</span><br><span class="line">print(word_counts)</span><br><span class="line">print(word_counts.most_common(<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">a = word_counts</span><br><span class="line">word_counts.update([<span class="string">&#x27;eyes&#x27;</span>, <span class="string">&#x27;the&#x27;</span>])</span><br><span class="line">print(a)</span><br><span class="line">b = Counter([<span class="string">&#x27;eyes&#x27;</span>, <span class="string">&#x27;the&#x27;</span>])</span><br><span class="line">print(a - b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13. 字典排序2</span></span><br><span class="line"><span class="comment"># 通过operator模块的itemgetter函数，获取排序</span></span><br><span class="line"><span class="comment"># itemgetter也支持多个keys，itemgetter生成一个callable对象</span></span><br><span class="line"><span class="comment"># 可以用匿名函数代替</span></span><br><span class="line"><span class="comment"># 但是建议用itemgetter，因为itemgetter速度快一点</span></span><br><span class="line"><span class="comment"># 注意，max和min也可以使用itemgetter方法</span></span><br><span class="line">rows = [</span><br><span class="line">    &#123;<span class="string">&#x27;fname&#x27;</span>: <span class="string">&#x27;Brian&#x27;</span>, <span class="string">&#x27;lname&#x27;</span>: <span class="string">&#x27;Jones&#x27;</span>, <span class="string">&#x27;uid&#x27;</span>: <span class="number">1003</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;fname&#x27;</span>: <span class="string">&#x27;David&#x27;</span>, <span class="string">&#x27;lname&#x27;</span>: <span class="string">&#x27;Beazley&#x27;</span>, <span class="string">&#x27;uid&#x27;</span>: <span class="number">1002</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;fname&#x27;</span>: <span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;lname&#x27;</span>: <span class="string">&#x27;Cleese&#x27;</span>, <span class="string">&#x27;uid&#x27;</span>: <span class="number">1001</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;fname&#x27;</span>: <span class="string">&#x27;Big&#x27;</span>, <span class="string">&#x27;lname&#x27;</span>: <span class="string">&#x27;Jones&#x27;</span>, <span class="string">&#x27;uid&#x27;</span>: <span class="number">1004</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</span><br><span class="line">rows_by_name = <span class="built_in">sorted</span>(rows, key=itemgetter(<span class="string">&#x27;fname&#x27;</span>))</span><br><span class="line">rows_by_uid = <span class="built_in">sorted</span>(rows, key=itemgetter(<span class="string">&#x27;uid&#x27;</span>))</span><br><span class="line">rows_by_lambda1 = <span class="built_in">sorted</span>(rows, key= <span class="keyword">lambda</span> x: x[<span class="string">&#x27;uid&#x27;</span>])</span><br><span class="line">rows_by_lambda2 = <span class="built_in">sorted</span>(rows, key= <span class="keyword">lambda</span> x: (x[<span class="string">&#x27;uid&#x27;</span>], x[<span class="string">&#x27;lname&#x27;</span>]))</span><br><span class="line">print(rows_by_name)</span><br><span class="line">print(rows_by_uid)</span><br><span class="line">print(rows_by_lambda1)</span><br><span class="line">print(rows_by_lambda2)</span><br><span class="line">print(<span class="built_in">max</span>(rows, key=itemgetter(<span class="string">&#x27;uid&#x27;</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 14. 排序原生对象</span></span><br><span class="line"><span class="comment"># 说明，内置的sorted函数有一个关键字参数key，可以传入一个callable对象</span></span><br><span class="line"><span class="comment"># callable对象放回一个值，该值作为一个输入对象</span></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> attrgetter</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, user_id</span>):</span></span><br><span class="line">        self.user_id = user_id</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;User(&#123;&#125;)&#x27;</span>.<span class="built_in">format</span>(self.user_id)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sort_notcompare</span>():</span></span><br><span class="line">    users = [User(<span class="number">23</span>), User(<span class="number">3</span>), User(<span class="number">99</span>)]</span><br><span class="line">    print(users)</span><br><span class="line">    print(<span class="built_in">sorted</span>(users, key=attrgetter(<span class="string">&#x27;user_id&#x27;</span>)))</span><br><span class="line">    print(<span class="built_in">sorted</span>(users, key=<span class="keyword">lambda</span> u: u.user_id))</span><br><span class="line"></span><br><span class="line">sort_notcompare()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 15. 记录分组</span></span><br><span class="line"><span class="comment"># 采用groupby函数进行分组，需要注意的是，groupby只比较连续函数，且必须先分好组</span></span><br><span class="line"><span class="comment"># 如果仅仅想将date字段放到一个更大的数据结构里面，建议用defaultdict</span></span><br><span class="line">rows = [</span><br><span class="line">    &#123;<span class="string">&#x27;address&#x27;</span>: <span class="string">&#x27;5412 N CLARK&#x27;</span>, <span class="string">&#x27;date&#x27;</span>: <span class="string">&#x27;07/01/2012&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;address&#x27;</span>: <span class="string">&#x27;5148 N CLARK&#x27;</span>, <span class="string">&#x27;date&#x27;</span>: <span class="string">&#x27;07/04/2012&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;address&#x27;</span>: <span class="string">&#x27;5800 E 58TH&#x27;</span>, <span class="string">&#x27;date&#x27;</span>: <span class="string">&#x27;07/02/2012&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;address&#x27;</span>: <span class="string">&#x27;2122 N CLARK&#x27;</span>, <span class="string">&#x27;date&#x27;</span>: <span class="string">&#x27;07/03/2012&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;address&#x27;</span>: <span class="string">&#x27;5645 N RAVENSWOOD&#x27;</span>, <span class="string">&#x27;date&#x27;</span>: <span class="string">&#x27;07/02/2012&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;address&#x27;</span>: <span class="string">&#x27;1060 W ADDISON&#x27;</span>, <span class="string">&#x27;date&#x27;</span>: <span class="string">&#x27;07/02/2012&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;address&#x27;</span>: <span class="string">&#x27;4801 N BROADWAY&#x27;</span>, <span class="string">&#x27;date&#x27;</span>: <span class="string">&#x27;07/01/2012&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;address&#x27;</span>: <span class="string">&#x27;1039 W GRANVILLE&#x27;</span>, <span class="string">&#x27;date&#x27;</span>: <span class="string">&#x27;07/04/2012&#x27;</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> groupby</span><br><span class="line">rows.sort(key=itemgetter(<span class="string">&#x27;date&#x27;</span>))</span><br><span class="line"><span class="keyword">for</span> date, items <span class="keyword">in</span> groupby(rows, key=itemgetter(<span class="string">&#x27;date&#x27;</span>)):</span><br><span class="line">    print(date)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> items:</span><br><span class="line">        print(<span class="string">&#x27; &#x27;</span>, i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line">rows_by_date = defaultdict(<span class="built_in">list</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> rows:</span><br><span class="line">    rows_by_date[item[<span class="string">&#x27;date&#x27;</span>]].append(item[<span class="string">&#x27;address&#x27;</span>])</span><br><span class="line">print(rows_by_date)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="代码【16-20】"><a href="#代码【16-20】" class="headerlink" title="代码【16-20】"></a>代码【16-20】</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># 16. 序列子集</span></span><br><span class="line"><span class="comment"># 队列推导，但是该方法会占用大量内存</span></span><br><span class="line"><span class="comment"># 生成器: ()</span></span><br><span class="line"><span class="comment"># 迭代器: filter</span></span><br><span class="line"><span class="comment"># itertools.compress()过滤，传参：序列、Boolean类型的条件</span></span><br><span class="line">mylist = [<span class="number">1</span>, <span class="number">4</span>, -<span class="number">5</span>, <span class="number">10</span>, -<span class="number">7</span>, <span class="number">2</span>, <span class="number">3</span>, -<span class="number">1</span>]</span><br><span class="line">print([n <span class="keyword">for</span> n <span class="keyword">in</span> mylist <span class="keyword">if</span> n &gt; <span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">pos = (n <span class="keyword">for</span> n <span class="keyword">in</span> mylist <span class="keyword">if</span> n &gt; <span class="number">0</span>)</span><br><span class="line">print(<span class="built_in">type</span>(pos))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pos:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_int</span>(<span class="params">val</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        x = <span class="built_in">int</span>(val)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span> ValueError:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">ivals = <span class="built_in">list</span>(<span class="built_in">filter</span>(is_int, mylist))</span><br><span class="line">print(ivals)</span><br><span class="line"></span><br><span class="line">addresses = [</span><br><span class="line">    <span class="string">&#x27;5412 N CLARK&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;5148 N CLARK&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;5800 E 58TH&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;2122 N CLARK&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;5645 N RAVENSWOOD&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;1060 W ADDISON&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;4801 N BROADWAY&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;1039 W GRANVILLE&#x27;</span>,</span><br><span class="line">]</span><br><span class="line">counts = [ <span class="number">0</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> compress</span><br><span class="line">more5 = [n &gt; <span class="number">5</span> <span class="keyword">for</span> n <span class="keyword">in</span> counts]</span><br><span class="line">print(more5)</span><br><span class="line">print(<span class="built_in">list</span>(compress(addresses, more5)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 17. 字典子集</span></span><br><span class="line"><span class="comment"># 字典推导（更快）</span></span><br><span class="line"><span class="comment"># 元组生成器</span></span><br><span class="line">prices = &#123;<span class="string">&#x27;ACME&#x27;</span>: <span class="number">45.23</span>, <span class="string">&#x27;AAPL&#x27;</span>: <span class="number">612.78</span>, <span class="string">&#x27;IBM&#x27;</span>: <span class="number">205.55</span>, <span class="string">&#x27;HPQ&#x27;</span>: <span class="number">37.20</span>, <span class="string">&#x27;FB&#x27;</span>: <span class="number">10.75</span>&#125;</span><br><span class="line">p1 = &#123;key: value <span class="keyword">for</span> key, value <span class="keyword">in</span> prices.items() <span class="keyword">if</span> value &gt; <span class="number">200</span>&#125;</span><br><span class="line">print(p1)</span><br><span class="line"></span><br><span class="line">p1 = <span class="built_in">dict</span>((key, value) <span class="keyword">for</span> key, value <span class="keyword">in</span> prices.items() <span class="keyword">if</span> value &gt; <span class="number">200</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> p1:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 18. 映射名称</span></span><br><span class="line"><span class="comment"># collection.namedtuple()函数，返回Python标准元组类型子类的工厂方法。</span></span><br><span class="line"><span class="comment"># 传递类型名和字段，返回类，返回类型支持所有元组操作</span></span><br><span class="line"><span class="comment"># 通常也可以用字典来描述，但是字典所占用内存更大，命名元组更加高效</span></span><br><span class="line"><span class="comment"># 需要注意到，元组类型是不可更改的，需要用到_replace()</span></span><br><span class="line"><span class="comment"># 如果目标包含一个更新很多实例属性的高效数据结构，推荐使用包含__slots__方法的类</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line">Subscriber = namedtuple(<span class="string">&#x27;Subscriber&#x27;</span>, [<span class="string">&#x27;addr&#x27;</span>, <span class="string">&#x27;joined&#x27;</span>])</span><br><span class="line">sub = Subscriber(<span class="string">&#x27;132@qq.com&#x27;</span>, <span class="string">&#x27;2020-12-21&#x27;</span>)</span><br><span class="line">print(sub, sub.addr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 该方法中，又用到了解压函数，将res解压赋值给Stock，然后调用Stock的下标进行分析</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line">Stock = namedtuple(<span class="string">&#x27;Stock&#x27;</span>, [<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;shares&#x27;</span>, <span class="string">&#x27;price&#x27;</span>])</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_cost</span>(<span class="params">records</span>):</span></span><br><span class="line">    total = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> rec <span class="keyword">in</span> records:</span><br><span class="line">        s = Stock(*rec)</span><br><span class="line">        total += s.shares * s.price</span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line"></span><br><span class="line">s = Stock(<span class="string">&#x27;ACME&#x27;</span>, <span class="number">100</span>, <span class="number">123.45</span>)</span><br><span class="line">s = s._replace(name = <span class="string">&#x27;xxx&#x27;</span>)</span><br><span class="line">print(s)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面这个例子说明了**和映射名称的用法</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line">Stock = namedtuple(<span class="string">&#x27;Stock&#x27;</span>, [<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;shares&#x27;</span>, <span class="string">&#x27;price&#x27;</span>, <span class="string">&#x27;date&#x27;</span>, <span class="string">&#x27;time&#x27;</span>])</span><br><span class="line"><span class="comment"># 创建类实体，加入类默认值</span></span><br><span class="line">stock_prototype = Stock(<span class="string">&#x27;&#x27;</span>, <span class="number">0</span>, <span class="number">0.0</span>, <span class="literal">None</span>, <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 函数，将字典映射到类中，并进行更改类默认值，优点，只实例化了一个对象，大大节省了空间</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dict_to_stock</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">return</span> stock_prototype._replace(**s)</span><br><span class="line"><span class="comment"># 使用例子</span></span><br><span class="line">a = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;ACME&#x27;</span>, <span class="string">&#x27;shares&#x27;</span>: <span class="number">100</span>, <span class="string">&#x27;price&#x27;</span>: <span class="number">123.45</span>&#125;</span><br><span class="line">print(dict_to_stock(a))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 19. 转换并计算序列。</span></span><br><span class="line"><span class="comment"># 生成器</span></span><br><span class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="comment"># 隐式传递生成器</span></span><br><span class="line">s = <span class="built_in">sum</span>(x * x <span class="keyword">for</span> x <span class="keyword">in</span> nums)</span><br><span class="line"><span class="comment"># 显示传递生成器</span></span><br><span class="line">s = <span class="built_in">sum</span>((x * x <span class="keyword">for</span> x <span class="keyword">in</span> nums))</span><br><span class="line">print(s)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 20. 合并映射</span></span><br><span class="line"><span class="comment"># chainmap类接受多个字典并在逻辑上变成一个字典，字典并不是真的合并了</span></span><br><span class="line"><span class="comment"># 如果重复值，则只会返回第一次出现的映射值</span></span><br><span class="line"><span class="comment"># 当然也可以使用update方法，但会创建一个全新的对象；</span></span><br><span class="line"><span class="comment"># 如果原字典做了更新，这种改变不会反应到新的合并字典中去</span></span><br><span class="line">a = &#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;z&#x27;</span>: <span class="number">3</span> &#125;</span><br><span class="line">b = &#123;<span class="string">&#x27;y&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;z&#x27;</span>: <span class="number">4</span> &#125;</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> ChainMap</span><br><span class="line">c = ChainMap(a, b)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/01/17/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">
+                
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			av: AV,
+			el: '#vcomments',
+			notify: false,
+			verify: false,
+			path: window.location.pathname,
+			appId: '',
+			appKey: '',
+			placeholder: '请输入评论',
+			avatar: 'retro',
+			recordIP: false
+		})
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">Rrigyouu</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
