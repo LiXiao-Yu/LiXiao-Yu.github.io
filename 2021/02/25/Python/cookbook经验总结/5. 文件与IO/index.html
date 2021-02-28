@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		5. 文件与IO | 
+	 
+	Hexo
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "https://lixiao-yu.github.io/";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">Hexo</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<!-- <li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li> -->
+		<!-- <li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li> -->
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Mysql
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8/">
+										Mysql索引使用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E5%AD%98%E5%82%A8/">
+										Mysql索引存储
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Mysql/Mysql%E9%94%81/">
+										Mysql锁
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Mysql/%E4%BA%8B%E5%8A%A1%E7%9A%84ACID/">
+										事务的ACID
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Python
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										cookbook经验总结
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/01/26/Python/cookbook%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/1.%20%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+										1. 常见数据结构与算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/02/25/Python/cookbook%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/3.%20%E6%95%B0%E5%AD%97%E6%97%A5%E6%9C%9F%E4%B8%8E%E6%97%B6%E9%97%B4/">
+										3. 数字日期与时间
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/02/25/Python/cookbook%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/4.%20%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/">
+										4. 迭代器和生成器
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2021/02/25/Python/cookbook%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/5.%20%E6%96%87%E4%BB%B6%E4%B8%8EIO/">
+										5. 文件与IO
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/02/25/Python/cookbook%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/6.%20%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81%E5%92%8C%E5%A4%84%E7%90%86/">
+										6. 数据编码和处理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/02/25/Python/cookbook%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/7.%20%E5%87%BD%E6%95%B0/">
+										7. 函数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/02/25/Python/cookbook%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/8.%20%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">
+										8. 类和对象
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Shell
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Shell基础
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Shell/Shell%E5%9F%BA%E7%A1%80/1%20%E5%9F%BA%E7%A1%80shell%E5%8F%8A%E5%85%B6%E5%91%BD%E4%BB%A4/">
+										1 基础shell及其命令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Shell/Shell%E5%9F%BA%E7%A1%80/2%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+										2 文件系统
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Shell/Shell%E5%9F%BA%E7%A1%80/3%20shell%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">
+										3 shell编程基础
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Shell/Shell%E5%9F%BA%E7%A1%80/5%20%E5%87%BD%E6%95%B0%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+										5 函数和正则表达式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Shell/Shell%E5%9F%BA%E7%A1%80/6%20sed/">
+										6 sed
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Shell/Shell%E5%9F%BA%E7%A1%80/7%20gawk/">
+										7 gawk
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Shell实战
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Shell/Shell%E5%AE%9E%E6%88%98/gawk%E5%AE%9E%E6%88%98/">
+										gawk实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Shell/Shell%E5%AE%9E%E6%88%98/sed%E5%AE%9E%E6%88%98/">
+										sed实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Shell/Shell%E5%AE%9E%E6%88%98/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A1%B9%E7%9B%AE/">
+										字符串项目
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Shell/Shell%E5%AE%9E%E6%88%98/%E7%B3%BB%E7%BB%9F%E5%B7%A1%E6%A3%80/">
+										系统巡检
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">
+										复杂网络
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+										我的第一篇博客
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	5. 文件与IO
+</h1>
+<div class="article-meta">
+	
+	<span>Rrigyouu</span>
+	<span>2021-02-25 23:24:37</span>
+    
+		<div id="article-categories">
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h3 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h3><p>所有程序都要处理输入和输出。 这一章将涵盖处理不同类型的文件，包括文本和二进制文件，文件编码和其他相关的内容。 对文件名和目录的操作也会涉及到。</p>
+<hr>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>【读写文件】你需要读写各种不同编码的文本数据，比如ASCII，UTF-8或UTF-16编码等。</li>
+<li>【输出重定向】你想将 <code>print()</code> 函数的输出重定向到一个文件中去。</li>
+<li>【改变默认分隔符】你想使用 <code>print()</code> 函数输出数据，但是想改变默认的分隔符或者行尾符。</li>
+<li>【读写字节数据】你想读写二进制文件，比如图片，声音文件等等。</li>
+<li>【写入不存在的文件】你想像一个文件中写入数据，但是前提必须是这个文件在文件系统上不存在。 也就是不允许覆盖已存在的文件内容。</li>
+<li>【字符串IO】你想使用操作类文件对象的程序来操作文本或二进制字符串。</li>
+<li>【读写压缩文件】你想读写一个gzip或bz2格式的压缩文件。</li>
+<li>【固定大小迭代】你想在一个固定长度记录或者数据块的集合上迭代，而不是在一个文件中一行一行的迭代。</li>
+<li>【读取二进制文件到可变缓冲区】你想直接读取二进制数据到一个可变缓冲区中，而不需要做任何的中间复制操作。 或者你想原地修改数据并将它写回到一个文件中去。</li>
+<li>【内存映射二进制文件】你想内存映射一个二进制文件到一个可变字节数组中，目的可能是为了随机访问它的内容或者是原地做些修改。</li>
+<li>【获取文件路径】你需要使用路径名来获取文件名，目录名，绝对路径等等。</li>
+<li>【测试文件是否存在】你想测试一个文件或目录是否存在。</li>
+<li>【文件列表】你想获取文件系统中某个目录下的所有文件列表。</li>
+<li>【文件名编码】你想使用原始文件名执行文件的I/O操作，也就是说文件名并没有经过系统默认编码去解码或编码过。</li>
+<li>【打印不合法文件名】你的程序获取了一个目录中的文件名列表，但是当它试着去打印文件名的时候程序崩溃， 出现了 <code>UnicodeEncodeError</code> 异常和一条奇怪的消息—— <code>surrogates not allowed</code> 。</li>
+<li>【增加或改变已打开文件的编码】你想在不关闭一个已打开的文件前提下增加或改变它的Unicode编码。</li>
+<li>【字节写入文本】你想在文本模式打开的文件中写入原始的字节数据。</li>
+<li>【文件包装】你有一个对应于操作系统上一个已打开的I/O通道(比如文件、管道、套接字等)的整型文件描述符， 你想将它包装成一个更高层的Python文件对象。</li>
+<li>【临时文件】你需要在程序执行时创建一个临时文件或目录，并希望使用完之后可以自动销毁掉。</li>
+<li>【串行端口读写数据】你想通过串行端口读写数据，典型场景就是和一些硬件设备打交道(比如一个机器人或传感器)。</li>
+<li>【序列化python对象】你需要将一个Python对象序列化为一个字节流，以便将它保存到一个文件、存储到数据库或者通过网络传输它。</li>
+</ol>
+<hr>
+<h3 id="代码【1-5】"><a href="#代码【1-5】" class="headerlink" title="代码【1-5】"></a>代码【1-5】</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># 1. 读写文件</span></span><br><span class="line"><span class="comment"># encoding方式有ascii, latin-1, utf-8, utf-16</span></span><br><span class="line"><span class="comment"># 推荐未知文件用latin-1方式编码</span></span><br><span class="line"><span class="comment"># 因为unix和windows换行符原因，python会默认输出符合操作系统的换行符，添加newline参数默认不处理</span></span><br><span class="line"><span class="comment"># 出现编码错误时，有选项：errors=&#x27;replace&#x27;, errors=&#x27;ignore&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;rt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            line = file.readline()</span><br><span class="line">            <span class="keyword">if</span> line:</span><br><span class="line">                <span class="keyword">yield</span> line</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> test(<span class="string">&#x27;test.txt&#x27;</span>):</span><br><span class="line">    print(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 输出重定向</span></span><br><span class="line"><span class="comment"># print有file属性</span></span><br><span class="line"><span class="comment"># 若以二进制打开，则可能会报错</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./example.txt&#x27;</span>, <span class="string">&#x27;wt&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(<span class="string">&#x27;Hello World!&#x27;</span>, file=f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 改变默认分隔符</span></span><br><span class="line"><span class="comment"># print(sep=, end=)</span></span><br><span class="line"><span class="comment"># sep分隔符，end结束符</span></span><br><span class="line"><span class="comment"># 通常也用str.join来进行分隔</span></span><br><span class="line">print(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, sep=<span class="string">&#x27; == &#x27;</span>, end=<span class="string">&#x27;~\n&#x27;</span>)</span><br><span class="line">row = (<span class="string">&#x27;ACME&#x27;</span>, <span class="number">50</span>, <span class="number">91.5</span>)</span><br><span class="line">print(<span class="string">&#x27;,&#x27;</span>.join(<span class="built_in">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> row))</span><br><span class="line">print(*row, sep=<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 读取字节数据</span></span><br><span class="line"><span class="comment"># 使用模式为 rb 或 wb 的 open() 函数来读取或写入二进制数据。</span></span><br><span class="line"><span class="comment"># 注意，二进制I/0可以直接写入数组和C结构体类型，不需要转换</span></span><br><span class="line"><span class="comment"># 这个适用于任何实现了&quot;缓冲接口&quot;的对象</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;somefile.bin&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">b&#x27;Hello World&#x27;</span>)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;somefile.bin&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> array</span><br><span class="line">nums = array.array(<span class="string">&#x27;i&#x27;</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;somefile.bin&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(nums)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 写入不存在的文件</span></span><br><span class="line"><span class="comment"># open中使用x模式代替w模式</span></span><br><span class="line"><span class="comment"># 注意，python2中没有该模式</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;xt&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        file.write(<span class="string">&#x27;hello!\n&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> FileExistsError:</span><br><span class="line">    print(<span class="string">&quot;File exists!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># python2版本写法</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;example.txt&#x27;</span>):</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;wt&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        file.write(<span class="string">&#x27;Hello!\n&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;File exists!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="代码【6-10】"><a href="#代码【6-10】" class="headerlink" title="代码【6-10】"></a>代码【6-10】</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 6. 字符串IO</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> io.StringIO()：文本</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> io.BytesIO()：二进制数据</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 通常用于模拟普通文件做单元测试时使用</span></span><br><span class="line">import io</span><br><span class="line"></span><br><span class="line">s = io.StringIO()</span><br><span class="line">s.write(&#x27;Hello world\n&#x27;)</span><br><span class="line">print(&#x27;This is a test&#x27;, file=s)</span><br><span class="line">print(s.getvalue())</span><br><span class="line">print(&#x27;##############&#x27;)</span><br><span class="line">s = io.StringIO(&#x27;Hello\nWorld\n&#x27;)</span><br><span class="line">print(s.read(4))</span><br><span class="line">print(s.read())</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 7. 读写压缩文件</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用gzip和bz2库</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> gzip.open() 和 bz2.open() 接受跟内置的 open() 函数一样的参数， 包括 encoding，errors，newline</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 此外，还可以指定压缩级别compresslevel=5，默认压缩级别最高：9</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 此外，一个打开的二进制文件，仍可以使用gzip.open() 和 bz2.open()</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 因此gzip和bz2可以工作在很多类文件对象上，如套接字，管道，内存中文件</span></span><br><span class="line">import gzip</span><br><span class="line">import bz2</span><br><span class="line"></span><br><span class="line">def test_gzip():</span><br><span class="line">    with gzip.open(&#x27;somefile.gz&#x27;, &#x27;rt&#x27;) as file:</span><br><span class="line">        text = file.read()</span><br><span class="line"></span><br><span class="line">def test_bz2():</span><br><span class="line">    with bz2.open(&#x27;somefile.bz2&#x27;, &#x27;rt&#x27;) as file:</span><br><span class="line">        text = file.read()</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 8. 固定大小迭代</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用iter和functools.partial函数</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> partial返回与固定值类型的相同对象</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 通常固定大小迭代，读取的是二进制文件</span></span><br><span class="line">from functools import partial</span><br><span class="line"></span><br><span class="line">RECORD_SIZE = 32</span><br><span class="line"></span><br><span class="line">def test_record_szie():</span><br><span class="line">    with open(&#x27;somefile.bin&#x27;, &#x27;rb&#x27;) as file:</span><br><span class="line">        records = iter(partial(f.read, RECORD_SIZE), &#x27;b&#x27;)</span><br><span class="line">        for r in records:</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 9. 读取二进制文件到可变缓冲区</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用readinto()方法</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 和普通 <span class="built_in">read</span>() 方法不同的是， readinto() 填充已存在的缓冲区而不是为新对象重新分配内存再返回它们。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 因此，你可以使用它来避免大量的内存分配操作。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 不只readinto，很多into相关函数都可以支持直接IO操作。</span></span><br><span class="line"></span><br><span class="line">import os.path</span><br><span class="line"></span><br><span class="line">def read_into_buffer(filename):</span><br><span class="line">    buf = bytearray(os.path.getsize(filename))</span><br><span class="line">    with open(filename, &#x27;rb&#x27;) as file:</span><br><span class="line">        file.readinto(buf)</span><br><span class="line">    return buf</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 避免大量分配内存操作</span></span><br><span class="line">record_size = 32 # Size of each record (adjust value)</span><br><span class="line"></span><br><span class="line">def avoid_memory_allocated():</span><br><span class="line">    buf = bytearray(record_size)</span><br><span class="line">    with open(&#x27;somefile&#x27;, &#x27;rb&#x27;) as f:</span><br><span class="line">        while True:</span><br><span class="line">            n = f.readinto(buf)</span><br><span class="line">            if n &lt; record_size:</span><br><span class="line">                break</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 通零复制方式对已存在的缓冲区进行切片</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 特性：memoryview</span></span><br><span class="line">buf = bytearray(b&#x27;Hello, world!&#x27;)</span><br><span class="line">m1 = memoryview(buf)</span><br><span class="line">m2 = m1[-5:]</span><br><span class="line">print(m2)</span><br><span class="line">m2[:] = b&#x27;WORLD&#x27;</span><br><span class="line">print(buf)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 10. 内存映射二进制文件</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果需要修改权限为只读，建议用mmap.ACCESS_READ</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 任何修改的内容都会复制到原来的文件中</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 最后，内存映射一个文件并不会导致整个文件被读取到内存中。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 操作系统仅仅为文件内容保留了一段虚拟内存</span></span><br><span class="line">import os</span><br><span class="line">import mmap</span><br><span class="line"></span><br><span class="line">def memory_map(filename, access=mmap.ACCESS_WRITE):</span><br><span class="line">    size = os.path.getsize(filename)</span><br><span class="line">    fd = os.open(filename, os.O_RDWR)</span><br><span class="line">    return mmap.mmap(fd, size, access=access)</span><br><span class="line"></span><br><span class="line">m = memory_map(&#x27;test.txt&#x27;)</span><br><span class="line">print(len(m))</span><br><span class="line">print(m[0:10])</span><br><span class="line">m.close()</span><br><span class="line">with open(&#x27;test.txt&#x27;, &#x27;rb&#x27;) as file:</span><br><span class="line">    print(file.read(10))</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 同样，支持操作</span></span><br><span class="line">with memory_map(&#x27;test.txt&#x27;) as m:</span><br><span class="line">    print(m[0:10])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="代码【11-15】"><a href="#代码【11-15】" class="headerlink" title="代码【11-15】"></a>代码【11-15】</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># 11. 获取文件路径</span></span><br><span class="line"><span class="comment"># os.path模块</span></span><br><span class="line"><span class="comment"># basename:文件名</span></span><br><span class="line"><span class="comment"># dirname:目录名</span></span><br><span class="line"><span class="comment"># join方法：合并文件</span></span><br><span class="line"><span class="comment"># expanduser方法：扩展路径(添加user目录)</span></span><br><span class="line"><span class="comment"># splitext方法： 分割</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">path = <span class="string">r&#x27;D:\Users\sangfor\Desktop\test\test.txt&#x27;</span></span><br><span class="line">print(os.path.basename(path))</span><br><span class="line">print(os.path.dirname(path))</span><br><span class="line">print(os.path.join(<span class="string">&#x27;tmp&#x27;</span>, <span class="string">&#x27;data&#x27;</span>, os.path.basename(path)))</span><br><span class="line"></span><br><span class="line">path = <span class="string">r&#x27;~\test.txt&#x27;</span></span><br><span class="line">print(os.path.expanduser(path))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 12. 测试文件是否存在</span></span><br><span class="line"><span class="comment"># os.path模块</span></span><br><span class="line"><span class="comment"># exist：判断文件是否存在</span></span><br><span class="line"><span class="comment"># isfile\isdir\islink：判断文件类型是否是文件/目录/符号链接</span></span><br><span class="line"><span class="comment"># realpath：获取符号链接的真正地址</span></span><br><span class="line"><span class="comment"># 获取文件时，需要注意是否有权限</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">print(os.path.exists(<span class="string">r&#x27;D:\Users\sangfor\Desktop\test\test.txt&#x27;</span>))</span><br><span class="line">print(os.path.exists(<span class="string">&#x27;/etc/passwd&#x27;</span>))</span><br><span class="line">print(os.path.isfile(<span class="string">r&#x27;D:\Users\sangfor\Desktop\test\test.txt&#x27;</span>))</span><br><span class="line">print(os.path.isdir(<span class="string">r&#x27;D:\Users\sangfor\Desktop\test\test.txt&#x27;</span>))</span><br><span class="line"><span class="comment"># 判断是否是符号链接</span></span><br><span class="line">print(os.path.islink(<span class="string">&#x27;/usr/local/bin/python3&#x27;</span>))</span><br><span class="line">print(os.path.realpath(<span class="string">&#x27;/usr/local/bin/python3&#x27;</span>))</span><br><span class="line"><span class="comment"># 获取元数据位置</span></span><br><span class="line">print(os.path.getsize(<span class="string">r&#x27;D:\Users\sangfor\Desktop\test\test.txt&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13. 文件列表</span></span><br><span class="line"><span class="comment"># 综合应用</span></span><br><span class="line"><span class="comment"># 通过生成器找出符合某个特定的文件列表</span></span><br><span class="line"><span class="comment"># 也可以使用字符串的startswith和endswith方法</span></span><br><span class="line"><span class="comment"># 文件名匹配，可用：glob 或 fnmatch 模块</span></span><br><span class="line"><span class="comment"># 文件内容其他信息，比如说修改时间采用os.stat()</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"></span><br><span class="line">name = os.listdir(<span class="string">r&#x27;D:\Users\sangfor\Desktop\test&#x27;</span>)</span><br><span class="line">print(name)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找出目录下的文件</span></span><br><span class="line">names = [name <span class="keyword">for</span> name <span class="keyword">in</span> name</span><br><span class="line">         <span class="keyword">if</span> os.path.isfile(os.path.join(<span class="string">r&#x27;D:\Users\sangfor\Desktop\test&#x27;</span>, name))]</span><br><span class="line">print(names)</span><br><span class="line"><span class="comment"># 找出目录下的目录</span></span><br><span class="line">names = [name <span class="keyword">for</span> name <span class="keyword">in</span> name</span><br><span class="line">         <span class="keyword">if</span> os.path.isdir(os.path.join(<span class="string">r&#x27;D:\Users\sangfor\Desktop\test&#x27;</span>, name))]</span><br><span class="line">print(names)</span><br><span class="line"><span class="comment"># 也可以使用字符串的startswith和endswith方法</span></span><br><span class="line"><span class="comment"># 文件名匹配，可用：glob 或 fnmatch 模块</span></span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line">pyfiles = glob.glob(<span class="string">r&#x27;D:\Users\sangfor\Desktop\test\*.py&#x27;</span>)</span><br><span class="line">print(pyfiles)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> fnmatch <span class="keyword">import</span> fnmatch</span><br><span class="line">pyfiles = [name <span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">r&#x27;D:\Users\sangfor\Desktop\test&#x27;</span>)</span><br><span class="line">            <span class="keyword">if</span> fnmatch(name, <span class="string">&#x27;*.py&#x27;</span>)]</span><br><span class="line">print(pyfiles)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 14. 文件名编码</span></span><br><span class="line"><span class="comment"># 通常默认编码为utf-8，需要修改编码格式，可以在listdir中间直接加b</span></span><br><span class="line"><span class="comment"># 默认采用的编码格式</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(sys.getfilesystemencoding())</span><br><span class="line"><span class="comment"># 采用二进制编码</span></span><br><span class="line">print(os.listdir(<span class="string">b&#x27;.&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 15. 打印不合法的文件名</span></span><br><span class="line"><span class="comment"># 有概率会出现打印时，无法打印文件名的错误</span></span><br><span class="line"><span class="comment"># 这是因为print默认utf8格式，但是文件名编译的时候采用了其他格式</span></span><br><span class="line"><span class="comment"># 因此，这种情况下，需要捕捉该种错误</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bad_filename</span>(<span class="params">filename</span>):</span></span><br><span class="line">    temp = filename.encode(sys.getfilesystemencoding(), errors=<span class="string">&#x27;surrogateescape&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> temp.decode(<span class="string">&#x27;latin-1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">files = [<span class="string">&#x27;spam.py&#x27;</span>, <span class="string">&#x27;b\udce4d.txt&#x27;</span>, <span class="string">&#x27;foo.txt&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> files:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        print(i)</span><br><span class="line">    <span class="keyword">except</span> UnicodeError:</span><br><span class="line">        print(bad_filename(i))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="代码【16-21】"><a href="#代码【16-21】" class="headerlink" title="代码【16-21】"></a>代码【16-21】</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># 16. 增加或改变已打开文件的编码</span></span><br><span class="line"><span class="comment"># 一个二进制打开的文件添加unicode编码格式，使用io.TextIOWrapper去包装</span></span><br><span class="line"><span class="comment"># 如果已经打开的文本，需要先detach()移除编码格式，使用新编码代替</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># u = urllib.request.urlopen(&#x27;http://www.baidu.com&#x27;, timeout=3)</span></span><br><span class="line"><span class="comment"># f = io.TextIOWrapper(u, encoding=&#x27;utf-8&#x27;)</span></span><br><span class="line"><span class="comment"># text = f.read()</span></span><br><span class="line"><span class="comment"># print(text)</span></span><br><span class="line">sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding=<span class="string">&#x27;latin-1&#x27;</span>)</span><br><span class="line">print(sys.stdout.encoding)</span><br><span class="line"></span><br><span class="line">files = <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">print(files)</span><br><span class="line">print(files.buffer)</span><br><span class="line">print(files.buffer.raw)</span><br><span class="line">files.close()</span><br><span class="line"><span class="comment"># &lt;_io.TextIOWrapper name=&#x27;example.txt&#x27; mode=&#x27;w&#x27; encoding=&#x27;cp936&#x27;&gt;</span></span><br><span class="line"><span class="comment"># &lt;_io.BufferedWriter name=&#x27;example.txt&#x27;&gt;</span></span><br><span class="line"><span class="comment"># &lt;_io.FileIO name=&#x27;example.txt&#x27; mode=&#x27;wb&#x27; closefd=True&gt;</span></span><br><span class="line"><span class="comment"># 通过输出，可以很明显看到TextIOWrapper为处理层</span></span><br><span class="line"><span class="comment"># files.buffer为二进制文件缓冲层</span></span><br><span class="line"><span class="comment"># 最底为原始文件</span></span><br><span class="line"><span class="comment"># detach方法会断开最顶层，返回第二层</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 17. 字节写入文本</span></span><br><span class="line"><span class="comment"># 直接写入buffer层即可</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.buffer.write(<span class="string">b&#x27;hello, world!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 18. 文件包装</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">fd = os.<span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, os.O_WRONLY | os.O_CREAT)</span><br><span class="line"><span class="comment"># fd为文件描述符，为整数，是一个系统的io通道</span></span><br><span class="line"><span class="comment"># Turn into a proper file</span></span><br><span class="line">f = <span class="built_in">open</span>(fd, <span class="string">&#x27;wt&#x27;</span>, closefd=<span class="literal">False</span>)</span><br><span class="line">f.write(<span class="string">&#x27;hello world~~~~~~\n&#x27;</span>)</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 19. 临时文件</span></span><br><span class="line"><span class="comment"># tempfile模块，自动完成清理</span></span><br><span class="line"><span class="comment"># 临时文件(无名字)：tempfile.TemporaryFile</span></span><br><span class="line"><span class="comment"># 临时文件(有名字)，可指定delete=False不删除文件：tempfile.NamedTemporaryFile</span></span><br><span class="line"><span class="comment"># 临时目录：tempfile.TemporaryDirectory</span></span><br><span class="line"><span class="comment"># 所有与临时文件相关的函数都允许一下关键字参数(prefix=&#x27;mytemp&#x27;, suffix=&#x27;.txt&#x27;, dir=&#x27;/tmp&#x27;)</span></span><br><span class="line"><span class="comment"># 最好通过tempfile模块进行创建</span></span><br><span class="line"><span class="keyword">from</span> tempfile <span class="keyword">import</span> TemporaryFile</span><br><span class="line"><span class="keyword">from</span> tempfile <span class="keyword">import</span> TemporaryDirectory</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> TemporaryFile(<span class="string">&#x27;w+t&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(<span class="string">&#x27;Hello, world!\n&#x27;</span>)</span><br><span class="line">    file.write(<span class="string">&#x27;Testing\n&#x27;</span>)</span><br><span class="line">    file.seek(<span class="number">0</span>)</span><br><span class="line">    data = file.read()</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> TemporaryDirectory() <span class="keyword">as</span> dirname:</span><br><span class="line">    print(<span class="string">&#x27;dirname is:&#x27;</span>, dirname)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用mkstemp()和mkdtemp()来创建临时文件和目录</span></span><br><span class="line"><span class="comment"># mkstemp返回一个文件描述符，需要自行创建；自行清理</span></span><br><span class="line"><span class="keyword">import</span> tempfile</span><br><span class="line"></span><br><span class="line">print(tempfile.mkstemp())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 20. 串行端口读写数据</span></span><br><span class="line"><span class="comment"># 使用pySerial包</span></span><br><span class="line"><span class="comment"># 暂不考虑</span></span><br><span class="line"><span class="keyword">import</span> serial</span><br><span class="line"></span><br><span class="line"><span class="comment"># 21. 序列化python对象</span></span><br><span class="line"><span class="comment"># 最好使用更加标准的数据编码格式如XML，CSV或JSON</span></span><br><span class="line"><span class="comment"># 最好不要使用pickle模块</span></span><br><span class="line"><span class="comment"># 注意，不要随便使用pickle.load代码，load过程会生成对应的数据结构，会有安全问题</span></span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">&#x27;a&#x27;</span>: <span class="string">&#x27;c&#x27;</span>&#125; <span class="comment"># Some Python object</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>)</span><br><span class="line">pickle.dump(<span class="built_in">str</span>(data), f)</span><br><span class="line"><span class="comment"># print(pickle.dumps())</span></span><br><span class="line">f.close()</span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">s = pickle.load(f)</span><br><span class="line">print(s)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2021/02/25/Python/cookbook%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/6.%20%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81%E5%92%8C%E5%A4%84%E7%90%86/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  6. 数据编码和处理
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/02/25/Python/cookbook%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/4.%20%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/">
+                4. 迭代器和生成器
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			av: AV,
+			el: '#vcomments',
+			notify: false,
+			verify: false,
+			path: window.location.pathname,
+			appId: '',
+			appKey: '',
+			placeholder: '请输入评论',
+			avatar: 'retro',
+			recordIP: false
+		})
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">Rrigyouu</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

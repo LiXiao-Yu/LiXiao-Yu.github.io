@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		关于我 | 
+		介绍 | 
 	 
 	Hexo
 	</title>
@@ -111,7 +111,7 @@
 									</a>
 									
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8/">
 										Mysql索引使用
 									</a>
@@ -384,26 +384,103 @@
 	<div id="content">
 		<h1 id="article-title">
 
-	关于我
+	Mysql索引使用
 </h1>
 <div class="article-meta">
 	
 	<span>Rrigyouu</span>
-	<span>2021-01-17 01:34:36</span>
+	<span>2021-01-17 01:20:40</span>
+    
+		<div id="article-categories">
+            
+		</div>
     
 </div>
 
 <div id="article-content">
-	<p>我是Rigyouu，是一名码农，目前在深信服从事研发工作。</p>
-<p>技术主攻：Python、Shell。</p>
-<p>热爱技术，热爱数学。</p>
-<p>数学和代码是唯一不会骗你的东西。</p>
-<h5 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h5><p>WeChat： Rrigyouu</p>
-<p>Mail: <a href="mailto:&#x72;&#114;&#105;&#x67;&#x79;&#111;&#x75;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#x72;&#114;&#105;&#x67;&#x79;&#111;&#x75;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
-<p>Tel: 1588-9511-445</p>
-<h4 id="感谢你的访问！"><a href="#感谢你的访问！" class="headerlink" title="感谢你的访问！"></a>感谢你的访问！</h4>
+	<h3 id="Mysql索引使用"><a href="#Mysql索引使用" class="headerlink" title="Mysql索引使用"></a>Mysql索引使用</h3><h4 id="Mysql索引设计"><a href="#Mysql索引设计" class="headerlink" title="Mysql索引设计"></a>Mysql索引设计</h4><h5 id="前提条件1"><a href="#前提条件1" class="headerlink" title="前提条件1"></a>前提条件1</h5><table>
+<thead>
+<tr>
+<th>磁盘IO</th>
+<th>性能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>随机读取</td>
+<td>从磁盘读取到缓存池，大约需要10ms</td>
+</tr>
+<tr>
+<td>内存读取</td>
+<td>如果页不在数据库缓存池中，则需要内存读取，大约1ms。</td>
+</tr>
+<tr>
+<td>顺序读取</td>
+<td>速度更快，大约0.1ms</td>
+</tr>
+</tbody></table>
+<p>总结：减少随机io次数，索引将随机io变成顺序io。</p>
+<h5 id="前提条件2"><a href="#前提条件2" class="headerlink" title="前提条件2"></a>前提条件2</h5><p>如果有table {id, username，sex, age}；有两个索引；index1 {id， username}，index2 {id, username，sex}。</p>
+<p>则index1被成为<strong>窄索引</strong>，index2被成为<strong>宽索引</strong>。</p>
+<p>当从table查找{id, username，sex}时，窄索引需要，获取id后，再获得age；宽索引能有效避免二次IO。</p>
+<p>总结：尽量使用宽索引。</p>
+<h5 id="前提条件3"><a href="#前提条件3" class="headerlink" title="前提条件3"></a>前提条件3</h5><p>如果三者占比如下：username （“Draven”）： 1%；sex （“man”）：50%；age（10）：10%；</p>
+<p>一般来说，选取过滤因子最小的作为索引第一列（从小到大），或者这三者（username，age，sex）同时使用，可以达到0.05%，但是过滤因子一般偏差比较大，例如 age=200的人基本没有，这样就不太稳定。</p>
+<p>总结：一般选择过滤因子小的作为索引第一列。</p>
+<h5 id="前提条件4"><a href="#前提条件4" class="headerlink" title="前提条件4"></a>前提条件4</h5><p>如果table表有name、age、（name、sex、age）三个辅助索引，当我们适用如下语句查询时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users</span><br><span class="line">WHERE name &#x3D; &quot;draven&quot; AND sex &#x3D; &quot;male&quot; AND age &gt; 20;</span><br></pre></td></tr></table></figure>
+<p>name、sex这样的等值谓词会作为匹配列，age会作为过滤页。</p>
+<h5 id="结论【三星索引】"><a href="#结论【三星索引】" class="headerlink" title="结论【三星索引】"></a>结论【三星索引】</h5><p>三星索引：只需要进行<strong>一次磁盘的随机读及一个窄索引片的顺序扫描</strong>就可以得到全部的结果集</p>
+<ol>
+<li><p>取出所有等值谓词列加入索引，减少索引片大小，减少需要扫描的数据行；</p>
+</li>
+<li><p>ORDER BY加入索引，避免排序，减少内存和io使用；</p>
+</li>
+<li><p>剩余列加入索引，避免回表。</p>
+</li>
+</ol>
+<p>问题： 当同时存在范围查找排序的话，无法做到三星索引的。</p>
+<p>原因：范围查找，则需要加入范围对应列的索引，索引后，还要重新排序；如果先排序，则需要重新选取范围。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name, age <span class="keyword">FROM</span> users</span><br><span class="line"><span class="keyword">WHERE</span> age <span class="keyword">BETWEEN</span> <span class="number">18</span> <span class="keyword">AND</span> <span class="number">21</span></span><br><span class="line">  <span class="keyword">AND</span> city <span class="operator">=</span> &quot;Beijing&quot;</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> name;</span><br><span class="line"><span class="comment">-- 当选择city、age作为索引时，即使name加入，仍需要order by排序</span></span><br><span class="line"><span class="comment">-- 当选择city、name作为索引时，加入age，无法做到age的选取</span></span><br><span class="line"><span class="comment">-- 因为范围查找和orderby都是选取一个范围，索引只能匹配一次</span></span><br></pre></td></tr></table></figure>
+<p>解决：希望最小化索引厚度，则要1；希望避免排序选择2。</p>
+<hr>
+<h4 id="Mysql索引使用-1"><a href="#Mysql索引使用-1" class="headerlink" title="Mysql索引使用"></a>Mysql索引使用</h4><p><strong>覆盖索引</strong>：查询语句中，直接从索引中就能获得所有的值，减少回表，以减少磁盘随机读取。</p>
+<p><strong>联合索引</strong>：mysql索引最左前缀匹配，创建一个（key1，key2，key3）的索引，相当于创建了（key1），（key1，key2），（key1，key2，key3）共3个索引。</p>
+<p><strong>索引下推</strong>：mysql 5.6版本加入，一般通过索引得到数据，返回给mysql服务器，然后mysql服务器进行条件筛选；索引下推则将判断条件给存储引擎，有存储引擎判断，然后返回给mysql服务器，减少了随机io的次数。适用于整表扫描，对于InnoDB只适用于二级索引，不适用于主键索引，因为会innodb主键索引会直接存入缓存。</p>
+<p><strong>查询优化器</strong>：一条mysql的语句查询，需要先通过优化器进行选择，然后找出执行成本最低的方案。优化过程：1.</p>
+<p>根据搜索条件，找到所有可能使用的索引；2.计算不同索引执行扫描的代价；3.计算全表扫描的代价；4.选出成本最低的那个。</p>
+<hr>
+<p><strong>Mysql索引失效</strong></p>
+<ol>
+<li>用or时，如果or其中一个条件没有索引，则可能失效；</li>
+<li>不符合最左匹配原则；</li>
+<li>存在隐式数据类型转换，如string转化为int；</li>
+<li>列使用了函数；</li>
+<li>where中进行null判断（注意，索引不会包含有null值的列）；</li>
+<li>where中用了！=或&lt;&gt;或not in，但&lt;,&lt;=，=，&gt;,&gt;=,BETWEEN,IN是可以用到索引的；</li>
+<li>表数据比较少。</li>
+</ol>
+
 </div>
 
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2021/01/17/Mysql/%E4%BA%8B%E5%8A%A1%E7%9A%84ACID/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  事务的ACID
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E5%AD%98%E5%82%A8/">
+                Mysql索引存储
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
 
 
 

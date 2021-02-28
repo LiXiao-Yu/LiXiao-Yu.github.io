@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		关于我 | 
+		介绍 | 
 	 
 	Hexo
 	</title>
@@ -315,7 +315,7 @@
 									</a>
 									
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2021/01/17/Shell/Shell%E5%AE%9E%E6%88%98/gawk%E5%AE%9E%E6%88%98/">
 										gawk实战
 									</a>
@@ -384,26 +384,42 @@
 	<div id="content">
 		<h1 id="article-title">
 
-	关于我
+	gawk实战
 </h1>
 <div class="article-meta">
 	
 	<span>Rrigyouu</span>
 	<span>2021-01-17 01:34:36</span>
     
+		<div id="article-categories">
+            
+		</div>
+    
 </div>
 
 <div id="article-content">
-	<p>我是Rigyouu，是一名码农，目前在深信服从事研发工作。</p>
-<p>技术主攻：Python、Shell。</p>
-<p>热爱技术，热爱数学。</p>
-<p>数学和代码是唯一不会骗你的东西。</p>
-<h5 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h5><p>WeChat： Rrigyouu</p>
-<p>Mail: <a href="mailto:&#x72;&#114;&#105;&#x67;&#x79;&#111;&#x75;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#x72;&#114;&#105;&#x67;&#x79;&#111;&#x75;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
-<p>Tel: 1588-9511-445</p>
-<h4 id="感谢你的访问！"><a href="#感谢你的访问！" class="headerlink" title="感谢你的访问！"></a>感谢你的访问！</h4>
+	<h3 id="gawk实战"><a href="#gawk实战" class="headerlink" title="gawk实战"></a>gawk实战</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 取出linux中eth0的IP地址</span></span><br><span class="line">ifconfig eth0 | gawk &#x27;NR==2 &#123; print $2&#125;&#x27;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计文件中行单词</span></span><br><span class="line">gawk &#x27;&#123;for (i=1;i&lt;=NF;i++) &#123;count[$i]++&#125; &#125; END &#123;for (j in count) &#123;print j,count[j]&#125;&#125;&#x27; /etc/init.d/functions</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计文件中每行的单词出现的次数</span></span><br><span class="line">gawk &#x27;&#123;for (i=1;i&lt;NF;i++) &#123;count[$i]++&#125;&#125; &#123;for (j in count) &#123;print j, count[j]&#125; delete count&#125;&#x27; /etc/init.d/functions</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计当前系统上所有tcp连接的各种状态数</span></span><br><span class="line">ss -tan | gawk &#x27;!/^State/&#123;state[$1]++&#125; END &#123;for (i in state) print i,state[i]&#125;&#x27;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 只处理用户ID为奇数的行，并打印用户名和ID号</span></span><br><span class="line">gawk -F: &#x27;&#123;if ($3%2==1) &#123;print $1,$3&#125; &#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 显示系统的普通用户，并打印用户及ID</span></span><br><span class="line">gawk -F: &#x27;&#123;if ($3&gt;=500) &#123;print $1,$3&#125;&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 显示系统用户是“/bin/bash<span class="string">&quot;的用户，并打印用户名</span></span></span><br><span class="line">gawk -F: &#x27;&#123;if ($7 == &quot;/bin/bash&quot;) &#123;print $1&#125;&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计普通用户的个数</span></span><br><span class="line">gawk -F: &#x27;BEGIN &#123;count=0&#125; &#123;if ($3&gt;=500) &#123;count++&#125;&#125; END &#123;print count&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计文本的总行数</span></span><br><span class="line">gawk &#x27;BEGIN &#123;count=0&#125; &#123;count++&#125; END &#123;print count&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取第2行第2个；分隔符空格</span></span><br><span class="line">ifconfig eth0 | gawk &#x27;&#123;FS=&quot; &quot;&#125; NR==2 &#123; print $2&#125;&#x27;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> NF数据行的字段数</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除delete</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </div>
 
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2021/01/17/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/01/17/Shell/Shell%E5%AE%9E%E6%88%98/sed%E5%AE%9E%E6%88%98/">
+                sed实战
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
 
 
 

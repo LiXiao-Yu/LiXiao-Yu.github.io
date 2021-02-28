@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		关于我 | 
+		介绍 | 
 	 
 	Hexo
 	</title>
@@ -120,7 +120,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E5%AD%98%E5%82%A8/">
 										Mysql索引存储
 									</a>
@@ -384,26 +384,164 @@
 	<div id="content">
 		<h1 id="article-title">
 
-	关于我
+	Mysql索引存储
 </h1>
 <div class="article-meta">
 	
 	<span>Rrigyouu</span>
-	<span>2021-01-17 01:34:36</span>
+	<span>2021-01-17 01:20:40</span>
+    
+		<div id="article-categories">
+            
+		</div>
     
 </div>
 
 <div id="article-content">
-	<p>我是Rigyouu，是一名码农，目前在深信服从事研发工作。</p>
-<p>技术主攻：Python、Shell。</p>
-<p>热爱技术，热爱数学。</p>
-<p>数学和代码是唯一不会骗你的东西。</p>
-<h5 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h5><p>WeChat： Rrigyouu</p>
-<p>Mail: <a href="mailto:&#x72;&#114;&#105;&#x67;&#x79;&#111;&#x75;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#x72;&#114;&#105;&#x67;&#x79;&#111;&#x75;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
-<p>Tel: 1588-9511-445</p>
-<h4 id="感谢你的访问！"><a href="#感谢你的访问！" class="headerlink" title="感谢你的访问！"></a>感谢你的访问！</h4>
+	<h3 id="Mysql索引分类"><a href="#Mysql索引分类" class="headerlink" title="Mysql索引分类"></a>Mysql索引分类</h3><table>
+<thead>
+<tr>
+<th>索引分类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单列索引</td>
+<td>1. 普通索引：允许空值和重复值；<br />2. 唯一索引：值唯一，仅允许一个空值；<br />3. 主键索引：特殊唯一索引，不允许存在空值。</td>
+</tr>
+<tr>
+<td>组合索引</td>
+<td>多列索引，遵循最左前缀原则。</td>
+</tr>
+<tr>
+<td>全文索引</td>
+<td>MyISAM引擎，仅支持索引字段char、varchar、text，主要做关键字搜索</td>
+</tr>
+<tr>
+<td>空间索引</td>
+<td>空间数据类型的字段所做的索引</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="Mysql索引结构"><a href="#Mysql索引结构" class="headerlink" title="Mysql索引结构"></a>Mysql索引结构</h3><p>哈希结构、B+树结构、R结构（空间索引，不常见）。</p>
+<h4 id="哈希结构"><a href="#哈希结构" class="headerlink" title="哈希结构"></a>哈希结构</h4><ol>
+<li>哈希表存储哈希值和链表指针；</li>
+</ol>
+<p>首先通过key生成哈希值，然后找对应哈希值的链表指针；</p>
+<p>若仅一行，则直接返回，若哈希冲突，则遍历key。</p>
+<ol start="2">
+<li><p>目前只有Memory引擎显示支持哈希索引，此外，Memory也支持B+树。</p>
+</li>
+<li><p>哈希结构优点：快，缺点：哈希索引不支持排序、匹配查找、只支持等值比较查询，因为数据不是顺序存储。</p>
+</li>
+<li><p>哈希结构使用场合：数据仓库应用中有一个经典的例子“星型”schema，需要关联很多表的查找，需要用到哈希索引。</p>
+</li>
+</ol>
+<h4 id="B-树结构"><a href="#B-树结构" class="headerlink" title="B+树结构"></a>B+树结构</h4><ol>
+<li>平衡二叉树→B树→B+树。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>树</th>
+<th>结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>平衡二叉树</td>
+<td>1. 节点最多允许两个子节点；<br />2. 左子&lt;父亲&lt;右子；<br />3. 左右子树高度相差不超过1，且子树也是平衡二叉树。</td>
+</tr>
+<tr>
+<td>B树</td>
+<td>1. 最多m个子节点；<br />2. 除根节点以外的非叶子节点最少有⌈m/2⌉个子节点（向下取整）；<br />3. 如果根节点不是叶子节点，则至少有两个子节点；<br />4. 拥有k个子节点的节点，有k-1个关键字；<br />5. 所有叶子结点都在同一层。</td>
+</tr>
+<tr>
+<td>B+树</td>
+<td>1. k 个子节点的非叶子节点拥有 k 个关键字，B树是k-1个；<br />2. 关键字不保存数据，只用来索引；<br />3. 数据保存在叶子结点。<br />4. 叶子结点有指针。</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="索引存储方式"><a href="#索引存储方式" class="headerlink" title="索引存储方式"></a>索引存储方式</h3><table>
+<thead>
+<tr>
+<th>存储方式</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非聚集索引</td>
+<td>1. 早期的MYISAM引擎，且可以不用设主键；<br />2. 主键和二级索引一样，叶子结点存放地址。</td>
+</tr>
+<tr>
+<td>聚集索引</td>
+<td>1. 主流INNODB引擎，一张表只允许一个聚集索引；<br />2. 主键默认聚集索引，叶子结点存储主键key和其他行数据；<br />3. 二级索引存储索引key和主键key；<br />4. 如果通过主键搜索，则直接拿到数据，如果通过二级索引，则需要先找到主键key。</td>
+</tr>
+</tbody></table>
+<p>聚集索引优点：</p>
+<ol>
+<li>相较与非聚集索引拿到的地址，还要进行一次IO，聚集索引明显更快；</li>
+<li>非聚集索引在每次移动数据、数据页面分裂时，都需要维护二级索引，更改地址；但是InnoDB不需要更新二级索引，因为只保存了索引和主键值。</li>
+<li>因为数据有序，主键的范围查询效率高；</li>
+</ol>
+<p>聚集索引缺点：</p>
+<ol>
+<li>插入的速度严重依赖于插入顺序，因为B+树需要主键进行排序；</li>
+<li>当插入新行或者更新主键时，可能会导致“页分裂”问题，占用更多的磁盘空间；</li>
+<li>全表扫描可能变慢，因为涉及到磁盘寻道；</li>
+<li>二级索引保存了主键列，会占用更多的空间。</li>
+</ol>
+<hr>
+<h3 id="页"><a href="#页" class="headerlink" title="页"></a>页</h3><p>在mysql中有一个默认为1的参数innodb_file_per_table，该参数设定每个表当做单独的一个文件存储，可在/var/lib/mysql中查看。若有表database1：则有文件database1.ibd；dabase.frm。</p>
+<table>
+<thead>
+<tr>
+<th>database1</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>database1.ibd</td>
+<td>Mysql数据文件和索引文件</td>
+</tr>
+<tr>
+<td>database1.frm</td>
+<td>Mysql表结构文件</td>
+</tr>
+</tbody></table>
+<p>*.ibd由多个段segment组成，每个segment由区extent构成，每个区1MB，包含64个页，每个页占16KB。</p>
+<p><strong>页是InnoDB可操作的最小粒度。</strong></p>
+<p>页存在阈值属性merge_threshold，一般为50%。</p>
+<h4 id="页结构"><a href="#页结构" class="headerlink" title="页结构"></a>页结构</h4><p>前指针+【页目录分组（6个每组），用户数据】+后指针。</p>
+<p>页就是B+树的叶子节点，页的查询可以通过新建索引文件来构建，这样就成了一个B+树。</p>
+<h4 id="页合并"><a href="#页合并" class="headerlink" title="页合并"></a>页合并</h4><p>插入数据，按照页的顺序，顺序插入；</p>
+<p>删除数据时，数据并没有被删除，只是标记为删除，空间可被其他数据使用，当删除记录到达merge_threshold时，该页会找相邻页，凑一个整页，来进行<strong>页合并</strong>优化存储空间。</p>
+<p>因此页合并发生在删除和更新操作中。</p>
+<h4 id="页分裂"><a href="#页分裂" class="headerlink" title="页分裂"></a>页分裂</h4><p>插入数据，如果该页已满，下页又没有多余的存储空间，InnoDB会在这个页进行<strong>页分裂</strong>，创建新页，重新记录页之间的关系，造成页的错位。</p>
+<p>页分裂发生在插入或者更新中。</p>
+<p>分裂出来的页，想要恢复顺序只能页合并，或者OPTIMIZE重新整理表。</p>
+<p><strong>页合并和分裂过程中，需要在索引树上加锁，可能会导致索引的锁争用。如果更新操作没有页合并和分裂，成为乐观更新，只需要使用读锁（S）；反之为悲观更新，需要写锁（X）。</strong></p>
+
 </div>
 
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Mysql索引使用
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/01/17/Shell/Shell%E5%9F%BA%E7%A1%80/2%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+                Shell基础
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
 
 
 

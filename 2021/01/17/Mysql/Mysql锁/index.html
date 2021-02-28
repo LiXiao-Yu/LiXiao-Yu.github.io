@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		关于我 | 
+		介绍 | 
 	 
 	Hexo
 	</title>
@@ -129,7 +129,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2021/01/17/Mysql/Mysql%E9%94%81/">
 										Mysql锁
 									</a>
@@ -384,26 +384,116 @@
 	<div id="content">
 		<h1 id="article-title">
 
-	关于我
+	Mysql锁
 </h1>
 <div class="article-meta">
 	
 	<span>Rrigyouu</span>
-	<span>2021-01-17 01:34:36</span>
+	<span>2021-01-17 01:20:40</span>
+    
+		<div id="article-categories">
+            
+		</div>
     
 </div>
 
 <div id="article-content">
-	<p>我是Rigyouu，是一名码农，目前在深信服从事研发工作。</p>
-<p>技术主攻：Python、Shell。</p>
-<p>热爱技术，热爱数学。</p>
-<p>数学和代码是唯一不会骗你的东西。</p>
-<h5 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h5><p>WeChat： Rrigyouu</p>
-<p>Mail: <a href="mailto:&#x72;&#114;&#105;&#x67;&#x79;&#111;&#x75;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#x72;&#114;&#105;&#x67;&#x79;&#111;&#x75;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
-<p>Tel: 1588-9511-445</p>
-<h4 id="感谢你的访问！"><a href="#感谢你的访问！" class="headerlink" title="感谢你的访问！"></a>感谢你的访问！</h4>
+	<h3 id="Mysql锁"><a href="#Mysql锁" class="headerlink" title="Mysql锁"></a>Mysql锁</h3><p>锁是服务层和存储引擎实现并发控制的。</p>
+<h4 id="锁的机制"><a href="#锁的机制" class="headerlink" title="锁的机制"></a>锁的机制</h4><table>
+<thead>
+<tr>
+<th>锁机制</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>共享锁（读锁）</td>
+<td>其他事务可读，不可写</td>
+</tr>
+<tr>
+<td>排他锁（写锁）</td>
+<td>其他事务不能读，也不能写</td>
+</tr>
+</tbody></table>
+<h4 id="锁粒度"><a href="#锁粒度" class="headerlink" title="锁粒度"></a>锁粒度</h4><table>
+<thead>
+<tr>
+<th>引擎</th>
+<th>锁粒度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MYISAM</td>
+<td>表级锁</td>
+</tr>
+<tr>
+<td>MEMORY</td>
+<td>表级锁</td>
+</tr>
+<tr>
+<td>BDB</td>
+<td>页面锁，支持表级锁</td>
+</tr>
+<tr>
+<td>INNODB</td>
+<td>行级锁，支持表级锁</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>锁粒度</th>
+<th>性能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>表级锁</td>
+<td>自动获得；<br />开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高，并发度最低；</td>
+</tr>
+<tr>
+<td>行级锁</td>
+<td>自动获得；<br />开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高；<br />只在InnoDB存储引擎中实现；</td>
+</tr>
+<tr>
+<td>页面锁</td>
+<td>开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般。</td>
+</tr>
+</tbody></table>
+<h3 id="MYISAM锁"><a href="#MYISAM锁" class="headerlink" title="MYISAM锁"></a>MYISAM锁</h3><p>读锁：不会阻塞同表读请求，阻塞同表读请求</p>
+<p>写锁：阻塞同表写请求</p>
+<p>读操作和写操作、写操作和写操作串行。</p>
+<p>默认写锁比读锁优先级更高，当锁释放时优先给写锁在给读锁，因此大量更新和查询操作不适合用MYISAM引擎。</p>
+<h3 id="INNODB锁"><a href="#INNODB锁" class="headerlink" title="INNODB锁"></a>INNODB锁</h3><p>只有通过索引，INNODB才会使用行锁；否则，使用表锁。</p>
+<p>行锁是针对索引加的锁，而不是记录加的锁。</p>
+<p>为了某事务的行为，INNODB添加了内部意向锁（表锁），在添加行锁之前添加。</p>
+<p>意向共享锁（IS）：事务读、select</p>
+<p>意向排他锁（IX）：事务写、insert、update、delete</p>
+<p><strong>间隙锁</strong>：用范围条件搜索是，键值在条件范围内，但不存在的记录加锁，会造成严重的锁等待。满足事务的隔离要求。因此尽量优化业务逻辑，使用相等条件。解决幻读场景。</p>
+<h3 id="其他锁"><a href="#其他锁" class="headerlink" title="其他锁"></a>其他锁</h3><p><strong>乐观锁</strong>：适用于多读场景，每次拿数据都认为别人没有更新数据。提高吞吐。</p>
+<p>实现方式：1. 为数据增加一个版本标识，比如说添加一个version字段，每次更新加1；提交更新时，通过判断version是否一直进行比对然后更新；2. 使用时间戳，同理，更新时，检查时间戳尽心规避。</p>
+<p><strong>悲观锁</strong>：假定一定会发生并发冲突，传统关系型数据库都采用这种锁机制。</p>
+
 </div>
 
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2021/01/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/01/17/Mysql/%E4%BA%8B%E5%8A%A1%E7%9A%84ACID/">
+                事务的ACID
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
 
 
 
