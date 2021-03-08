@@ -138,7 +138,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2021/01/17/Mysql/%E4%BA%8B%E5%8A%A1%E7%9A%84ACID/">
 										事务的ACID
 									</a>
@@ -259,7 +259,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2021/01/17/Shell/Shell%E5%9F%BA%E7%A1%80/2%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
 										2 文件系统
 									</a>
@@ -384,7 +384,7 @@
 	<div id="content">
 		<h1 id="article-title">
 
-	事务的ACID
+	2 文件系统
 </h1>
 <div class="article-meta">
 	
@@ -398,77 +398,167 @@
 </div>
 
 <div id="article-content">
-	<h3 id="事务的ACID"><a href="#事务的ACID" class="headerlink" title="事务的ACID"></a>事务的ACID</h3><p>原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）</p>
-<p>原子性：最小分割单元</p>
-<p>一致性：一个一致性状态转移到另一个一致性状态</p>
-<p>隔离性：最终提交前，对其他事务不可见</p>
-<p>持久性：一旦提交，永久保留到数据库中</p>
-<h3 id="Mysql事务架构"><a href="#Mysql事务架构" class="headerlink" title="Mysql事务架构"></a>Mysql事务架构</h3><p>mysql服务器架构分为三层：</p>
-<ol>
-<li>连接层：客户端连接、授权认证；</li>
-<li>服务器层（缓存模块、语法分析模块、优化模块）</li>
-<li>存储引擎层（只有存储引擎层实现事务）。</li>
-</ol>
-<p>事务的隔离性通过<strong>锁、MVCC等</strong>实现</p>
-<p>事务的原子性、一致性、持久性通过<strong>事务日志</strong>实现</p>
-<h3 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h3><p>SQL定义了四种隔离级别：</p>
+	<h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><hr>
+<h4 id="linux系统安全性"><a href="#linux系统安全性" class="headerlink" title="linux系统安全性"></a>linux系统安全性</h4><p>用户密码在/etc/passwd下，UID在500以下均为系统预留账户。</p>
+<p>从500开始，系统会将第一个可用UID给用户。</p>
+<p>/etc/passwd格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
-<th>隔离级别</th>
-<th>要点</th>
+<th>登录用户名</th>
+<th>密码</th>
+<th>用户账户的UID</th>
+<th>组UID</th>
+<th>用户文本描述</th>
+<th>HOME</th>
+<th>默认shell</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>read uncommitted</td>
-<td>1. 所有事务都可以看到其他未提交事务的执行结果<br />2. 少用，可能引发脏读</td>
+<td>bin</td>
+<td>x</td>
+<td>1</td>
+<td>1</td>
+<td>bin</td>
+<td>/bin</td>
+<td>/sbin/nologin</td>
 </tr>
 <tr>
-<td>read committed</td>
-<td>1. 多数数据库默认隔离级别<br />2. 事务只能看见已经提交的事务<br />3. 可能出现不可重复读，即同一事务中完全相同的select数据可能看到不同结果</td>
+<td>daemon</td>
+<td>x</td>
+<td>2</td>
+<td>2</td>
+<td>daemon</td>
+<td>/sbin</td>
+<td>/sbin/nologin</td>
 </tr>
 <tr>
-<td>repeatable read</td>
-<td>1. mysql默认事务隔离级别<br />2. 同一事务的多个实例在并发读取数据时，会看到同样的数据行<br />3. 可能出现幻读<br />4. InnoDB通过MVCC和间隙锁解决幻读</td>
-</tr>
-<tr>
-<td>serializable</td>
-<td>1. 最高隔离级别<br />2. 强制事务排序，解决幻读问题<br />3. 可能出现大量超时和锁竞争</td>
+<td>adm</td>
+<td>x</td>
+<td>3</td>
+<td>4</td>
+<td>adm</td>
+<td>/var/adm</td>
+<td>/sbin/nologin</td>
 </tr>
 </tbody></table>
-<h4 id="并发事务问题"><a href="#并发事务问题" class="headerlink" title="并发事务问题"></a>并发事务问题</h4><p>更新丢失：多个事务选择同一行，发生更新后丢失（如同一份文件两个人同时更改）</p>
-<p>脏读：事务对修改某条记录，但未提交，此时另一个事务读取同一条数据，读取到了脏数据</p>
-<p>不可重复读：再次读取某数据，发现数据已经改变（重点在于数据的修改）</p>
-<p>幻读：再次检索某数据，发现其他事务插入了满足检索条件的其他数据（重点在于数据的新增和删除）</p>
-<h4 id="并发解决办法"><a href="#并发解决办法" class="headerlink" title="并发解决办法"></a>并发解决办法</h4><p>更新丢失：1. 数据库事务控制；2. 应用程序也要加锁。</p>
-<p>脏读、不可重复读、幻读：是数据库的一致性问题，通过加锁和多版本并发控制（MultiVersion Concurrency Control，简称 MVCC）实现。</p>
-<h4 id="MVCC"><a href="#MVCC" class="headerlink" title="MVCC"></a>MVCC</h4><p>原因：并发控制，实现数据库的并发访问。数据库一般读多写少，于是发明了锁（读锁和写锁）；读锁之间不互斥，写锁和所有的锁互斥；但是读锁的并发性能依然不够；提出读写不冲突的方法，读取数据时通过一种类似快照的方式将数据保存下来，这样读锁就和写锁不冲突了，不同的事务session会看到自己特定版本的数据。</p>
-<p>实现方式：MVCC的实现是通过保存数据在某一个时间点快照来实现的。</p>
-<p>实现原理：InnoDB的MVCC是通过在每行记录后面保存两个隐藏的列来实现。这两个列一个保存了行的创建时间，一个保存行的过期时间（删除时间）。当然存储的并不是真实的时间而是系统版本号（system version number）。每开始一个新的事务，系统版本号都会自动新增。事务开始时刻的系统版本号会作为事务的版本号，用来查询到每行记录的版本号进行比较。</p>
+<p>密码均为x，密码文件在/etc/shadow下，共9项。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root:$6$Q.xkOdBtG/8$edyRVMhWBci8I/ll8cJesIs/GZ7mzaZDBv2eAzGGav44T1c0TGGbwuKbx4LytLwIp0qkH1M6OV06i1ChvDgrW.:18583:0:99999:7:::</span><br><span class="line">bin:*:17834:0:99999:7:::</span><br><span class="line">daemon:*:17834:0:99999:7:::</span><br><span class="line">adm:*:17834:0:99999:7:::</span><br></pre></td></tr></table></figure>
+<p>分别代表：</p>
+<p>用户名、加密密码、上次修改密码后天数（1970/01/01算起）</p>
+<p>多少天后才能修改密码、多少天后必须修改密码、过期前多少天提醒用户更改密码</p>
+<p>密码过期多少天禁用账户、用户账户被禁用日期（1970/01/01算起）、预留字段</p>
+<hr>
+<h4 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h4><p>添加用户：</p>
+<p>useradd -D 查看新增用户默认值</p>
+<p>useradd -b -e -f -g -s 修改默认值</p>
+<p>useradd … 创建新用户，修改值</p>
+<p>useradd -m 创建新用户，并把/etc/skel目录中，bash登录文件复制到新用户HOME目录下</p>
+<p>删除用户：</p>
+<p>userdel -r：默认删去/etc/passwd下文件信息，不会删除系统所属文件；-r 会删除HOME及邮件目录</p>
+<p>修改用户：</p>
+<p>usermod ：可修改/etc/passwd全部字段；-L将用户锁定，无法登陆；-U恢复正常</p>
+<p>passwd：修改密码，-e 强制下次登录更改密码</p>
+<p>chpasswd：修改密码，可重定向</p>
+<p>chage、chfn、chsh：修改特定账户信息</p>
+<hr>
+<h4 id="组"><a href="#组" class="headerlink" title="组"></a>组</h4><p>组文件保存在/etc/group文件中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:</span><br><span class="line">bin:x:1:</span><br><span class="line">daemon:x:2:</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
-<th>操作</th>
-<th>mvcc</th>
+<th>组名</th>
+<th>组密码</th>
+<th>GID</th>
+<th>用户列表</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>select</td>
-<td>1. innodb只找早版本遭遇当前事务版本的数据行<br />2. 行的删除版本号要么未定义，要么大于当前事务版本号，这样可以确保事务读取到的行在事务开始之前未被删除</td>
-</tr>
-<tr>
-<td>insert</td>
-<td>新插入的行保存当前系统版本号</td>
-</tr>
-<tr>
-<td>delete</td>
-<td>保存当前系统版本号作为行删除标识</td>
-</tr>
-<tr>
-<td>update</td>
-<td>保存当前系统版本号作为行版本号，同时保存当前系统版本号到原来的行作为删除标识</td>
+<td>root</td>
+<td>x</td>
+<td>0</td>
+<td>默认组不会列出用户</td>
 </tr>
 </tbody></table>
+<p>不允许直接修改/etc/group修改用户组名，推荐使用usermod命令</p>
+<p>usermod -G shared daemon：为shared加入daemon用户</p>
+<p>创建新组：groupadd</p>
+<p>修改组：groupmod</p>
+<hr>
+<h4 id="文件权限-1"><a href="#文件权限-1" class="headerlink" title="文件权限"></a>文件权限</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x. 2 root root         15 Nov 17 23:05 1</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>文件所属主权限</th>
+<th>文件属组权限</th>
+<th>其他用户权限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rwx</td>
+<td>r-x</td>
+<td>r-x</td>
+</tr>
+</tbody></table>
+<p>创建文件默认权限：umask</p>
+<p>一般是输出0022（掩码），代表了644权限；</p>
+<p>不看第一位，文件的全读写权限为666，减去022，即666-022=644</p>
+<p>对于目录来说，目录全读写执权限为777，减去022，为755。</p>
+<p>改变权限：</p>
+<p>chmod 755；</p>
+<p>chmod o+r\u-x；第一个字符u(用户)g(组)o(其他)a(所有)；+/-增加减少权限；r/w/x。</p>
+<p>改变所属关系：chown ：chown user.group XXX</p>
+<p>chgrp更改文件默认属组， change group1 file。</p>
+<p>PS：linux基本权限位为9位，但是还有额外的三个权限为，分别为：SUID、SGID、黏着位。</p>
+<hr>
+<h4 id="涉及命令"><a href="#涉及命令" class="headerlink" title="涉及命令"></a>涉及命令</h4><ul>
+<li>useradd -m </li>
+<li>userdel -r</li>
+<li>usermod -L/-U</li>
+<li>groupadd</li>
+<li>groupmod</li>
+<li>umask</li>
+<li>chmod a-w ：所有用户减去写权限</li>
+<li>chown</li>
+<li>chgrp</li>
+</ul>
+<hr>
+<h3 id="文件系统（File-System）"><a href="#文件系统（File-System）" class="headerlink" title="文件系统（File System）"></a>文件系统（File System）</h3><hr>
+<h4 id="ext文件系统"><a href="#ext文件系统" class="headerlink" title="ext文件系统"></a>ext文件系统</h4><p>ext文件系统：extended filesystem，虚拟目录操作硬件；定长块存储数据。</p>
+<p>ext1包含文件名、文件大小、文件属主、文件属组、文件权限、文件指针，linux通过文件索引访问。</p>
+<p>ext2新增时间值，按组分配磁盘，减少磁盘碎片化管理。</p>
+<p>ext1和ext2直接写入磁盘。</p>
+<p>日志文件系统（类似于用日志做了一个缓存）</p>
+<p>现将文件更改写入临时文件（日志）中，在数据成功写入存储以及索引节点表后，删除日志目录。</p>
+<hr>
+<h4 id="操作文件系统"><a href="#操作文件系统" class="headerlink" title="操作文件系统"></a>操作文件系统</h4><p>创建分区： fdisk /dev/vda；</p>
+<p>进入fdisk交互式cli中，p列出当前分区；n创建新的分区……</p>
+<p>格式化文件系统</p>
+<p>mkfs.xfs：创建一个xfs文件系统</p>
+<p>mkfs.ext4：创建一个ext4文件系统</p>
+<p>将分区挂载</p>
+<p>mount （-t ext4） /dev/vda /mnt/my_partition</p>
+<p>错误检查： fsck</p>
+<hr>
+<h4 id="涉及命令-1"><a href="#涉及命令-1" class="headerlink" title="涉及命令"></a>涉及命令</h4><ul>
+<li>lsblk</li>
+<li>fdisk</li>
+<li>mkfs.ext4</li>
+<li>mount</li>
+</ul>
+<hr>
+<h3 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h3><hr>
+<p>在此只介绍yum，不介绍apt。</p>
+<p>查看可安装软件名，此处可以进行模式匹配：yum list ***</p>
+<p>查看某个文件属于哪个yum包：yum provides ***</p>
+<p>安装： yum install ***</p>
+<p>本地安装：yum localinstall *** （rpm -ivh 区别？）</p>
+<p>列出可用更新：yum list updates</p>
+<p>更新某个软件：yum update （***）</p>
+<p>删除软件，保留配置文件和数据文件：yum remove  ***</p>
+<p>删软件所有信息：yum erase ***</p>
+<p>确认安装软件包的依赖关系：yum deplist ***</p>
 
 </div>
 
@@ -476,18 +566,13 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2021/01/17/Mysql/Mysql%E9%94%81/">
+              <a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E5%AD%98%E5%82%A8/">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Mysql锁
+                  
               </a>
             
         </div>
         <div class="item right">
-            
-              <a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8/">
-                Mysql索引使用
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-              </a>
             
         </div>
     </div>

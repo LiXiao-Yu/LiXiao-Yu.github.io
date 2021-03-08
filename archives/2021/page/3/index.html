@@ -8,8 +8,6 @@
 	<!-- title -->
 	
 	<title>
-	
-		介绍 | 
 	 
 	Hexo
 	</title>
@@ -138,7 +136,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2021/01/17/Mysql/%E4%BA%8B%E5%8A%A1%E7%9A%84ACID/">
 										事务的ACID
 									</a>
@@ -382,139 +380,112 @@
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<h1 id="article-title">
-
-	事务的ACID
-</h1>
-<div class="article-meta">
+		<div id="index">
 	
-	<span>Rrigyouu</span>
-	<span>2021-01-17 01:20:40</span>
-    
-		<div id="article-categories">
-            
-		</div>
-    
+		<div class="index-li">
+			<a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8/">
+				<h2 class="index-title">
+					Mysql索引使用
+				</h2>
+				<div class="index-brief">
+					Mysql索引使用Mysql索引设计前提条件1
+
+
+磁盘IO
+性能
+
+
+
+随机读取
+从磁盘读取到缓存池，大约需要10ms
+
+
+内存读取
+如果页不在数据库缓存池中，则需要内存读取，大约1ms。
+
+
+顺序读取
+速度更快，大约0.1ms
+
+
+总结：减少随机io次数，索引将随机io变成顺序io。
+前提条件2
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-01-17</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E5%AD%98%E5%82%A8/">
+				<h2 class="index-title">
+					Mysql索引存储
+				</h2>
+				<div class="index-brief">
+					Mysql索引分类
+
+
+索引分类
+描述
+
+
+
+单列索引
+1. 普通索引：允许空值和重复值；2. 唯一索引：值唯一，仅允许一个空值；3. 主键索引：特殊唯一索引，不允许存在空值。
+
+
+组合索引
+多列索引，遵循最左前缀原则。
+
+
+全文索引
+MyISAM引擎，仅支持索引字段char、varchar、tex
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-01-17</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2021/01/17/Shell/Shell%E5%9F%BA%E7%A1%80/2%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+				<h2 class="index-title">
+					2 文件系统
+				</h2>
+				<div class="index-brief">
+					文件权限
+linux系统安全性用户密码在/etc/passwd下，UID在500以下均为系统预留账户。
+从500开始，系统会将第一个可用UID给用户。
+/etc/passwd格式如下：
+123bin:x:1:1:bin:/bin:/sbin/nologindaemon:x:2:2:daemon:/s
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-01-17</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+	
+	<div id="index-paginator">
+		
+			<a class="extend prev" rel="prev" href="/archives/2021/page/2/">&lt;</a><a class="page-number" href="/archives/2021/">1</a><a class="page-number" href="/archives/2021/page/2/">2</a><span class="page-number current">3</span>
+		
+	</div>
 </div>
 
-<div id="article-content">
-	<h3 id="事务的ACID"><a href="#事务的ACID" class="headerlink" title="事务的ACID"></a>事务的ACID</h3><p>原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）</p>
-<p>原子性：最小分割单元</p>
-<p>一致性：一个一致性状态转移到另一个一致性状态</p>
-<p>隔离性：最终提交前，对其他事务不可见</p>
-<p>持久性：一旦提交，永久保留到数据库中</p>
-<h3 id="Mysql事务架构"><a href="#Mysql事务架构" class="headerlink" title="Mysql事务架构"></a>Mysql事务架构</h3><p>mysql服务器架构分为三层：</p>
-<ol>
-<li>连接层：客户端连接、授权认证；</li>
-<li>服务器层（缓存模块、语法分析模块、优化模块）</li>
-<li>存储引擎层（只有存储引擎层实现事务）。</li>
-</ol>
-<p>事务的隔离性通过<strong>锁、MVCC等</strong>实现</p>
-<p>事务的原子性、一致性、持久性通过<strong>事务日志</strong>实现</p>
-<h3 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h3><p>SQL定义了四种隔离级别：</p>
-<table>
-<thead>
-<tr>
-<th>隔离级别</th>
-<th>要点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>read uncommitted</td>
-<td>1. 所有事务都可以看到其他未提交事务的执行结果<br />2. 少用，可能引发脏读</td>
-</tr>
-<tr>
-<td>read committed</td>
-<td>1. 多数数据库默认隔离级别<br />2. 事务只能看见已经提交的事务<br />3. 可能出现不可重复读，即同一事务中完全相同的select数据可能看到不同结果</td>
-</tr>
-<tr>
-<td>repeatable read</td>
-<td>1. mysql默认事务隔离级别<br />2. 同一事务的多个实例在并发读取数据时，会看到同样的数据行<br />3. 可能出现幻读<br />4. InnoDB通过MVCC和间隙锁解决幻读</td>
-</tr>
-<tr>
-<td>serializable</td>
-<td>1. 最高隔离级别<br />2. 强制事务排序，解决幻读问题<br />3. 可能出现大量超时和锁竞争</td>
-</tr>
-</tbody></table>
-<h4 id="并发事务问题"><a href="#并发事务问题" class="headerlink" title="并发事务问题"></a>并发事务问题</h4><p>更新丢失：多个事务选择同一行，发生更新后丢失（如同一份文件两个人同时更改）</p>
-<p>脏读：事务对修改某条记录，但未提交，此时另一个事务读取同一条数据，读取到了脏数据</p>
-<p>不可重复读：再次读取某数据，发现数据已经改变（重点在于数据的修改）</p>
-<p>幻读：再次检索某数据，发现其他事务插入了满足检索条件的其他数据（重点在于数据的新增和删除）</p>
-<h4 id="并发解决办法"><a href="#并发解决办法" class="headerlink" title="并发解决办法"></a>并发解决办法</h4><p>更新丢失：1. 数据库事务控制；2. 应用程序也要加锁。</p>
-<p>脏读、不可重复读、幻读：是数据库的一致性问题，通过加锁和多版本并发控制（MultiVersion Concurrency Control，简称 MVCC）实现。</p>
-<h4 id="MVCC"><a href="#MVCC" class="headerlink" title="MVCC"></a>MVCC</h4><p>原因：并发控制，实现数据库的并发访问。数据库一般读多写少，于是发明了锁（读锁和写锁）；读锁之间不互斥，写锁和所有的锁互斥；但是读锁的并发性能依然不够；提出读写不冲突的方法，读取数据时通过一种类似快照的方式将数据保存下来，这样读锁就和写锁不冲突了，不同的事务session会看到自己特定版本的数据。</p>
-<p>实现方式：MVCC的实现是通过保存数据在某一个时间点快照来实现的。</p>
-<p>实现原理：InnoDB的MVCC是通过在每行记录后面保存两个隐藏的列来实现。这两个列一个保存了行的创建时间，一个保存行的过期时间（删除时间）。当然存储的并不是真实的时间而是系统版本号（system version number）。每开始一个新的事务，系统版本号都会自动新增。事务开始时刻的系统版本号会作为事务的版本号，用来查询到每行记录的版本号进行比较。</p>
-<table>
-<thead>
-<tr>
-<th>操作</th>
-<th>mvcc</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>select</td>
-<td>1. innodb只找早版本遭遇当前事务版本的数据行<br />2. 行的删除版本号要么未定义，要么大于当前事务版本号，这样可以确保事务读取到的行在事务开始之前未被删除</td>
-</tr>
-<tr>
-<td>insert</td>
-<td>新插入的行保存当前系统版本号</td>
-</tr>
-<tr>
-<td>delete</td>
-<td>保存当前系统版本号作为行删除标识</td>
-</tr>
-<tr>
-<td>update</td>
-<td>保存当前系统版本号作为行版本号，同时保存当前系统版本号到原来的行作为删除标识</td>
-</tr>
-</tbody></table>
-
-</div>
-
-
-    <div class="post-guide">
-        <div class="item left">
-            
-              <a href="/2021/01/17/Mysql/Mysql%E9%94%81/">
-                  <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Mysql锁
-              </a>
-            
-        </div>
-        <div class="item right">
-            
-              <a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8/">
-                Mysql索引使用
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-              </a>
-            
-        </div>
-    </div>
-
-
-
-	<div id="vcomments"></div>
-
-
-<script>
-	
-		// 评论
-		new Valine({
-			av: AV,
-			el: '#vcomments',
-			notify: false,
-			verify: false,
-			path: window.location.pathname,
-			appId: '',
-			appKey: '',
-			placeholder: '请输入评论',
-			avatar: 'retro',
-			recordIP: false
-		})
-	
-	
-</script>
 	</div>
 	<div id="footer">
 	<p>
