@@ -8,8 +8,6 @@
 	<!-- title -->
 	
 	<title>
-	
-		介绍2 | 
 	 
 	Hexo
 	</title>
@@ -315,7 +313,7 @@
 									</a>
 									
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2021/01/17/Shell/Shell%E5%AE%9E%E6%88%98/gawk%E5%AE%9E%E6%88%98/">
 										gawk实战
 									</a>
@@ -382,68 +380,112 @@
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<h1 id="article-title">
-
-	gawk实战
-</h1>
-<div class="article-meta">
+		<div id="index">
 	
-	<span>Rrigyouu</span>
-	<span>2021-01-17 01:34:36</span>
-    
-		<div id="article-categories">
-            
-		</div>
-    
+		<div class="index-li">
+			<a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8/">
+				<h2 class="index-title">
+					Mysql索引使用
+				</h2>
+				<div class="index-brief">
+					Mysql索引使用Mysql索引设计前提条件1
+
+
+磁盘IO
+性能
+
+
+
+随机读取
+从磁盘读取到缓存池，大约需要10ms
+
+
+内存读取
+如果页不在数据库缓存池中，则需要内存读取，大约1ms。
+
+
+顺序读取
+速度更快，大约0.1ms
+
+
+总结：减少随机io次数，索引将随机io变成顺序io。
+前提条件2
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-01-17</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2021/01/17/Mysql/Mysql%E7%B4%A2%E5%BC%95%E5%AD%98%E5%82%A8/">
+				<h2 class="index-title">
+					Mysql索引存储
+				</h2>
+				<div class="index-brief">
+					Mysql索引分类
+
+
+索引分类
+描述
+
+
+
+单列索引
+1. 普通索引：允许空值和重复值；2. 唯一索引：值唯一，仅允许一个空值；3. 主键索引：特殊唯一索引，不允许存在空值。
+
+
+组合索引
+多列索引，遵循最左前缀原则。
+
+
+全文索引
+MyISAM引擎，仅支持索引字段char、varchar、tex
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-01-17</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2021/01/17/Shell/Shell%E5%9F%BA%E7%A1%80/2%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+				<h2 class="index-title">
+					2 文件系统
+				</h2>
+				<div class="index-brief">
+					文件权限
+linux系统安全性用户密码在/etc/passwd下，UID在500以下均为系统预留账户。
+从500开始，系统会将第一个可用UID给用户。
+/etc/passwd格式如下：
+123bin:x:1:1:bin:/bin:/sbin/nologindaemon:x:2:2:daemon:/s
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-01-17</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+	
+	<div id="index-paginator">
+		
+			<a class="extend prev" rel="prev" href="/archives/2021/page/2/">&lt;</a><a class="page-number" href="/archives/2021/">1</a><a class="page-number" href="/archives/2021/page/2/">2</a><span class="page-number current">3</span>
+		
+	</div>
 </div>
 
-<div id="article-content">
-	<h3 id="gawk实战"><a href="#gawk实战" class="headerlink" title="gawk实战"></a>gawk实战</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 取出linux中eth0的IP地址</span></span><br><span class="line">ifconfig eth0 | gawk &#x27;NR==2 &#123; print $2&#125;&#x27;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计文件中行单词</span></span><br><span class="line">gawk &#x27;&#123;for (i=1;i&lt;=NF;i++) &#123;count[$i]++&#125; &#125; END &#123;for (j in count) &#123;print j,count[j]&#125;&#125;&#x27; /etc/init.d/functions</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计文件中每行的单词出现的次数</span></span><br><span class="line">gawk &#x27;&#123;for (i=1;i&lt;NF;i++) &#123;count[$i]++&#125;&#125; &#123;for (j in count) &#123;print j, count[j]&#125; delete count&#125;&#x27; /etc/init.d/functions</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计当前系统上所有tcp连接的各种状态数</span></span><br><span class="line">ss -tan | gawk &#x27;!/^State/&#123;state[$1]++&#125; END &#123;for (i in state) print i,state[i]&#125;&#x27;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 只处理用户ID为奇数的行，并打印用户名和ID号</span></span><br><span class="line">gawk -F: &#x27;&#123;if ($3%2==1) &#123;print $1,$3&#125; &#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 显示系统的普通用户，并打印用户及ID</span></span><br><span class="line">gawk -F: &#x27;&#123;if ($3&gt;=500) &#123;print $1,$3&#125;&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 显示系统用户是“/bin/bash<span class="string">&quot;的用户，并打印用户名</span></span></span><br><span class="line">gawk -F: &#x27;&#123;if ($7 == &quot;/bin/bash&quot;) &#123;print $1&#125;&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计普通用户的个数</span></span><br><span class="line">gawk -F: &#x27;BEGIN &#123;count=0&#125; &#123;if ($3&gt;=500) &#123;count++&#125;&#125; END &#123;print count&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计文本的总行数</span></span><br><span class="line">gawk &#x27;BEGIN &#123;count=0&#125; &#123;count++&#125; END &#123;print count&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取第2行第2个；分隔符空格</span></span><br><span class="line">ifconfig eth0 | gawk &#x27;&#123;FS=&quot; &quot;&#125; NR==2 &#123; print $2&#125;&#x27;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> NF数据行的字段数</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除delete</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</div>
-
-
-    <div class="post-guide">
-        <div class="item left">
-            
-              <a href="/2021/01/17/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">
-                  <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  
-              </a>
-            
-        </div>
-        <div class="item right">
-            
-              <a href="/2021/01/17/Shell/Shell%E5%AE%9E%E6%88%98/sed%E5%AE%9E%E6%88%98/">
-                sed实战
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-              </a>
-            
-        </div>
-    </div>
-
-
-
-	<div id="vcomments"></div>
-
-
-<script>
-	
-		// 评论
-		new Valine({
-			av: AV,
-			el: '#vcomments',
-			notify: false,
-			verify: false,
-			path: window.location.pathname,
-			appId: '',
-			appKey: '',
-			placeholder: '请输入评论',
-			avatar: 'retro',
-			recordIP: false
-		})
-	
-	
-</script>
 	</div>
 	<div id="footer">
 	<p>
