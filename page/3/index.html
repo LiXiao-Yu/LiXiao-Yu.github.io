@@ -105,6 +105,35 @@
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
+										Linux
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Linux/%E6%9C%8D%E5%8A%A1(systemd)/">
+										服务(systemd)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Linux/%E9%98%B2%E7%81%AB%E5%A2%99(iptables)/">
+										防火墙(iptables)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
 										Mysql
 									</a>
 									
@@ -227,6 +256,26 @@
 			
 								</li>
 								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Redis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/01/17/Redis/Redis%E5%8F%82%E6%95%B0/">
+										Redis参数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 								</li>
@@ -515,6 +564,67 @@ linux系统安全性用户密码在/etc/passwd下，UID在500以下均为系统�
 从500开始，系统会将第一个可用UID给用户。
 /etc/passwd格式如下：
 123bin:x:1:1:bin:/bin:/sbin/nologindaemon:x:2:2:daemon:/s
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-01-17</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2021/01/17/Redis/Redis%E5%8F%82%E6%95%B0/">
+				<h2 class="index-title">
+					Redis参数
+				</h2>
+				<div class="index-brief">
+					Redis 5.0.X 哨兵版参数配置项无特殊说明，默认为增量单机版加上哨兵版增量、差量即为哨兵版参数
+
+
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-01-17</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2021/01/17/Linux/%E6%9C%8D%E5%8A%A1(systemd)/">
+				<h2 class="index-title">
+					服务(systemd)
+				</h2>
+				<div class="index-brief">
+					服务Centos管理服务通常采用service和systemctl两种方式。
+service命令service命令，移动到/etc/init.d/目录下，执行相关程序。
+123456# 启动redis服务service redis start# 等价于/etc/init.d/redis start#
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-01-17</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2021/01/17/Linux/%E9%98%B2%E7%81%AB%E5%A2%99(iptables)/">
+				<h2 class="index-title">
+					防火墙(iptables)
+				</h2>
+				<div class="index-brief">
+					防火墙centos防火墙有两种：firewalld、iptables，两者不兼容！
+即使使用firewalld防火墙，firewalld底层实现仍依赖于iptables。
+firewalld官方网站：https://firewalld.org/documentation/
+zone：firewall
 					...
 				</div>
 			</a>
